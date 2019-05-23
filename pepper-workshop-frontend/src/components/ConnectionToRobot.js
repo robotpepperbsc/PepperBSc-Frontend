@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import headLogo from '../assets/pepper_head_logo.png';
 import '../css/ConnectionToRobot.css';
+import axios from 'axios';
 
 class ConnectionToRobot extends React.Component {
     constructor(props){
@@ -14,6 +15,24 @@ class ConnectionToRobot extends React.Component {
     }
 
     handleSubmit(){
+        const url ='';
+        const data = {
+            ipAddress: this.state.ipAddress
+        };
+
+        axios.post(url,data).then(response => {
+            this.setState({loading : false});
+            if(response.status === 200){
+            }
+            else{
+                throw new Error(response.status.toString())
+            }
+        })
+            .catch((error) => {
+                if(error.response.status === 401){
+                }
+                console.log('error ' + error);
+            });
     }
 
     render () {
