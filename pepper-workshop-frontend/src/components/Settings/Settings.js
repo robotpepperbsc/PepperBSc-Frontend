@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Container } from "react-bootstrap";
+import SpeechSlider from "../SpeechSlider/SpeechSlider";
+import "./Settings.sass";
 
 export default class Settings extends Component {
   constructor(props) {
@@ -14,6 +16,10 @@ export default class Settings extends Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleLoudnessChange = value => {
+    this.setState({ speechLoudness: value });
   };
 
   render() {
@@ -45,10 +51,12 @@ export default class Settings extends Component {
               speech loudness
             </Form.Label>
             <Col sm="10">
-              <Form.Control
-                name="speechLoudness"
-                onChange={e => this.handleChange(e)}
-              />
+              <div className="loudness-slider">
+                <SpeechSlider
+                  name="speechLoudness"
+                  onLoudnessChange={e => this.handleLoudnessChange(e)}
+                />
+              </div>
             </Col>
           </Form.Group>
         </Form>
