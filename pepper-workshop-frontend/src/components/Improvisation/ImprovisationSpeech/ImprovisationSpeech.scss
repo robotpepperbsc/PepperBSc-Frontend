@@ -1,0 +1,11 @@
+#speechInput {
+  min-height: 5rem;
+}
+
+.improvisation-speech {
+  &.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

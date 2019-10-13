@@ -1,0 +1,20 @@
+.improvisation-container {
+  margin: 1rem;
+}
+
+.improvisation {
+  &.btn {
+    margin: 10px;
+    width: 200px;
+  }
+  &.header {
+    text-align: center;
+    width: 50%;
+    background-color: #a8a3a3;
+    font-size: 16px;
+    border: 2px solid #665656;
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin: 20px 50px;
+  }
+}

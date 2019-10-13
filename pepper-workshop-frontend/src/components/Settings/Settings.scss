@@ -1,0 +1,19 @@
+.loudness-slider {
+  margin-top: 1rem;
+}
+
+.settings-container {
+  margin-top: 2rem;
+}
+
+.settings-form-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons-row {
+  > .btn {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

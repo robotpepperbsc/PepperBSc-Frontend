@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav, Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./Header.sass";
+import "./Header.scss";
 
 const Header = () => {
   return (
@@ -12,6 +12,11 @@ const Header = () => {
           <Link to="/improvisation">
             <Button className="nav-button" variant="dark">
               Improvisation
+            </Button>
+          </Link>
+          <Link to="/scenarios">
+            <Button className="nav-button" variant="dark">
+              Scenarios
             </Button>
           </Link>
           <Link to="/settings">
