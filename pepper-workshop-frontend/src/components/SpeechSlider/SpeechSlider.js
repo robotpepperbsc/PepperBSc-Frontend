@@ -31,7 +31,7 @@ export default class SpeechSlider extends Component {
     } = this;
 
     return (
-      <div style={{ height: 120, width: "100%" }}>
+      <div style={{ margin: "1rem", height: 20, width: "100%" }}>
         <Slider
           mode={1}
           step={1}

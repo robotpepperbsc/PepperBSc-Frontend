@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Image } from "react-bootstrap";
 import downArrow from "../../../../assets/moveArrows/down-arrow.svg";
-import leftArrow from "../../../../assets/moveArrows/left-arrow.svg";
-import rightArrow from "../../../../assets/moveArrows/right-arrow.svg";
+import turnLeft from "../../../../assets/moveArrows/rotate-left.svg";
+import turnRight from "../../../../assets/moveArrows/rotate-right.png";
 import upArrow from "../../../../assets/moveArrows/up-arrow.svg";
 import "./ImprovisationMoveManual.scss";
 
@@ -54,12 +54,12 @@ export default class ImprovisationMoveManual extends Component {
           <Image
             onClick={this.handleSelectArrowLeft}
             className={"arrow left"}
-            src={leftArrow}
+            src={turnLeft}
           ></Image>
           <Image
             onClick={this.handleSelectArrowRight}
             className={"arrow right"}
-            src={rightArrow}
+            src={turnRight}
           ></Image>
         </div>
         <div>

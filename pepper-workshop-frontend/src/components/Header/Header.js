@@ -19,6 +19,11 @@ const Header = () => {
               Scenarios
             </Button>
           </Link>
+          <Link to="/media">
+            <Button className="nav-button" variant="dark">
+              Media
+            </Button>
+          </Link>
           <Link to="/settings">
             <Button className="nav-button" variant="dark">
               Settings

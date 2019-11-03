@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import "./ImprovisationSpeech.scss";
+import SpeechSlider from "../../SpeechSlider/SpeechSlider";
 
 export default class ImprovisationSpeech extends Component {
   static propTypes = {
@@ -13,7 +14,9 @@ export default class ImprovisationSpeech extends Component {
     super(props);
 
     this.state = {
-      speechInput: ""
+      speechInput: "",
+      speechLoudness: 50,
+      speechSpeed: 50
     };
   }
 
@@ -47,6 +50,14 @@ export default class ImprovisationSpeech extends Component {
     this.setState({ speechInput: "" });
   };
 
+  handleLoudnessChange = value => {
+    this.setState({ speechLoudness: value });
+  };
+
+  handleSpeechSpeedChange = value => {
+    this.setState({ speechSpeed: value });
+  };
+
   render() {
     return (
       <Form>
@@ -61,6 +72,18 @@ export default class ImprovisationSpeech extends Component {
                   name="speechInput"
                   as={"textarea"}
                   onChange={this.handleChange}
+                />
+                <Form.Control
+                  className="loudness-slider"
+                  name="speechLodunessinput"
+                  as={SpeechSlider}
+                  onLoudnessChange={this.handleLoudnessChange}
+                />
+                <Form.Control
+                  className="loudness-slider"
+                  name="speechLodunessinput"
+                  as={SpeechSlider}
+                  onLoudnessChange={this.handleSpeechSpeedChange}
                 />
                 <Button
                   className={"improvisation"}
