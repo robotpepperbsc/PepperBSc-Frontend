@@ -7,8 +7,13 @@ export default class Scenarios extends Component {
     prop: PropTypes
   };
 
+  componentDidMount() {
+    this.props.getScenarios();
+  }
+
   render() {
     const { scenarios } = this.props;
+    console.log(scenarios);
     return (
       <Fragment>
         <ScenarioList scenarios={scenarios} />

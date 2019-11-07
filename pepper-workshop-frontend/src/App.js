@@ -6,8 +6,8 @@ import Settings from "./components/Settings/Settings";
 import Improvisation from "./components/Improvisation/Improvisation";
 import { Provider } from "react-redux";
 import configureStore from "./modules/configureStore";
-import Scenarios from "./components/Scenarios/Scenarios";
 import MediaContainer from "./components/ Media/MediaContainer";
+import ScenariosContainer from "./components/Scenarios/ScenariosContainer";
 
 const store = configureStore();
 
@@ -23,7 +23,7 @@ class App extends React.Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/improvisation" component={Improvisation} />
-                <Route path="/scenarios" component={Scenarios} />
+                <Route path="/scenarios" component={ScenariosContainer} />
                 <Route path="/media" component={MediaContainer} />
               </Switch>
             </div>

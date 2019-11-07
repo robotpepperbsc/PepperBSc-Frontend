@@ -16,6 +16,6 @@ function* watchGetMedia() {
   yield takeEvery(GET_MEDIA, getMedia);
 }
 
-export default function* scenariosSagas() {
+export default function* mediaSagas() {
   yield all([watchGetMedia()]);
 }
