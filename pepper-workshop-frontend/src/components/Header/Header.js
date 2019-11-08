@@ -30,7 +30,6 @@ const Header = () => {
             </Button>
           </Link>
         </Nav>
-        |
       </Navbar.Collapse>
     </Navbar>
   );
