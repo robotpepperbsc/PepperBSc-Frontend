@@ -6,6 +6,7 @@ import { getScenarios } from "../../modules/Scenarios/actions";
 
 const mapStateToProps = state => ({
   scenarios: state.scenarios.scenarios,
+  activeScenario: state.scenarios.activeScenario,
   loading: state.scenarios.loading
 });
 
