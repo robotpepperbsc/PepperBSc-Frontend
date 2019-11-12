@@ -1,4 +1,9 @@
-import { GET_SCENARIOS, SCENARIOS_RECEIVED } from "./actions";
+import {
+  GET_SCENARIOS,
+  SCENARIOS_RECEIVED,
+  SET_ACTIVE_SCENARIO,
+  SET_ACTIVE_SCENARIO_SUCCESS
+} from "./actions";
 
 const initialState = {
   scenarios: [],
@@ -13,6 +18,8 @@ export default function scenariosReducer(state = initialState, action) {
     case SCENARIOS_RECEIVED:
       return { ...state, scenarios: action.payload, loading: false };
     case SET_ACTIVE_SCENARIO:
+      return { ...state, loading: true };
+    case SET_ACTIVE_SCENARIO_SUCCESS:
       return { ...state, activeScenario: action.scenario };
     default:
       return state;

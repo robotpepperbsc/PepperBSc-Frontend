@@ -1,20 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ScenarioListItem = ({ name, description, date, deleteScenario }) => {
+const ScenarioListItem = ({ scenario, deleteScenario, setActiveScenario }) => {
   const handleDeleteScenario = () => {
-    deleteScenario(name);
+    deleteScenario(scenario.name);
   };
 
   const handleEditScenario = () => {
     //history push
   };
 
+  const handleSetActiveScenario = () => {
+    setActiveScenario(scenario);
+  };
+
   return (
-    <div>
-      {name}
-      {description}
-      {date}
+    <div onClick={handleSetActiveScenario}>
+      {scenario.name}
+      {scenario.description}
+      {scenario.date}
       <button onClick={handleEditScenario}>edit</button>
       <button onClick={handleDeleteScenario}>delete</button>
     </div>

@@ -1,21 +1,18 @@
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import { put, takeEvery, all, call, takeLatest } from "redux-saga/effects";
 import * as api from "./api";
-import { GET_SCENARIOS, SCENARIOS_RECEIVED } from "./actions";
+import {
+  GET_SCENARIOS,
+  SCENARIOS_RECEIVED,
+  SET_ACTIVE_SCENARIO,
+  setActiveScenarioSuccess,
+  DELETE_SCENARIO
+} from "./actions";
 import { setError } from "../Errors/actions";
+import { getActiveScenario } from "./selectors";
+
 function* getScenarios() {
   try {
-    const scenarios = [
-      {
-        name: "scenario1",
-        description: "cos tam",
-        last_modification_date: "2019-02-10"
-      },
-      {
-        name: "scenario2",
-        description: "jejejejeej",
-        last_modification_date: "2019-02-13"
-      }
-    ];
+    const scenarios = yield call(api.fetchScenarios);
     yield put({ type: SCENARIOS_RECEIVED, payload: scenarios });
   } catch (error) {
     console.log(error);
@@ -23,10 +20,43 @@ function* getScenarios() {
   }
 }
 
+function* updateActiveScenario(action) {
+  try {
+    const scenario = yield call(api.fetchScenario, action.name);
+
+    yield put(setActiveScenarioSuccess(scenario));
+  } catch (error) {
+    console.log(error);
+    yield put(setError(error));
+  }
+}
+
+function* deleteScenario(action) {
+  try {
+    yield call(api.deleteScenario, action.name);
+    yield put(getScenarios());
+  } catch (error) {
+    console.log(error);
+    yield put(setError(error));
+  }
+}
+
+function* watchDeleteScenario() {
+  yield takeLatest(DELETE_SCENARIO, deleteScenario);
+}
+
 function* watchGetSCenarios() {
   yield takeEvery(GET_SCENARIOS, getScenarios);
 }
 
+function* watchSetActiveScenario() {
+  yield takeEvery(SET_ACTIVE_SCENARIO, updateActiveScenario);
+}
+
 export default function* scenariosSagas() {
-  yield all([watchGetSCenarios()]);
+  yield all([
+    watchGetSCenarios(),
+    watchSetActiveScenario(),
+    watchDeleteScenario()
+  ]);
 }
