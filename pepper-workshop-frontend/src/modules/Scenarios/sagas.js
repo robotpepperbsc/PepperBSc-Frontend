@@ -8,8 +8,6 @@ import {
   DELETE_SCENARIO
 } from "./actions";
 import { setError } from "../Errors/actions";
-import { getActiveScenario } from "./selectors";
-
 function* getScenarios() {
   try {
     const scenarios = yield call(api.fetchScenarios);
