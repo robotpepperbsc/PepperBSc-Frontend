@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import ScenarioHeader from "./ScenarioHeader";
+import { makeStyles } from "@material-ui/core/styles";
+import { Button, Grid } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+  submit: {
+    margin: theme.spacing(3, 0, 2)
+  }
+}));
 
 const ScenarioPanel = ({ activeScenario, postScenario, modifyScenario }) => {
+  const classes = useStyles();
+
   const [values, setValues] = useState({
     newScenario: true,
     name: "",
@@ -40,16 +50,38 @@ const ScenarioPanel = ({ activeScenario, postScenario, modifyScenario }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleNewScenario}>new scenario</button>
-      <ScenarioHeader
-        name={activeScenario.name}
-        description={activeScenario.description}
-        handleNameChange={handleChange}
-        handleDescriptionChange={handleChange}
-      />
-      <button onCLick={handlePostScenario}>save scenario</button>
-    </div>
+    <Grid container item xs={6}>
+      <Button
+        fullWidth
+        variant="contained"
+        color="primary"
+        className={classes.submit}
+        onClick={handleNewScenario}
+      >
+        new scenario
+      </Button>
+      {activeScenario || values.newScenario ? (
+        <Fragment>
+          <ScenarioHeader
+            name={values.name}
+            description={values.description}
+            handleNameChange={handleChange}
+            handleDescriptionChange={handleChange}
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={handlePostScenario}
+          >
+            save scenario
+          </Button>
+        </Fragment>
+      ) : null}
+    </Grid>
   );
 };
 

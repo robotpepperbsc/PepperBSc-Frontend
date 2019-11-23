@@ -4,7 +4,7 @@ import ScenarioList from "./ScenarioList/ScenarioList";
 import ScenarioPanel from "./ScenarioPanel/ScenarioPanel";
 import ScenarioListContainer from "./ScenarioList/ScenarioListContainer";
 import ScenarioPanelContainer from "./ScenarioPanel/ScenarioPanelContainer";
-import { Container, Row } from "react-bootstrap";
+import { Container, Grid } from "@material-ui/core";
 
 export default class Scenarios extends Component {
   static propTypes = {
@@ -14,11 +14,11 @@ export default class Scenarios extends Component {
   render() {
     return (
       <Fragment>
-        <Container>
-          <Row>
+        <Container component="main" maxWidth={"lg"}>
+          <Grid container spacing={2}>
             <ScenarioListContainer />
             <ScenarioPanelContainer />
-          </Row>
+          </Grid>
         </Container>
       </Fragment>
     );

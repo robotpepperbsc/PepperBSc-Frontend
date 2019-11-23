@@ -1,20 +1,31 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import PropTypes from "prop-types";
 import ScenarioListItem from "./ScenarioListItem";
+import { Grid, GridList, List } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-export default class ScenarioList extends Component {
-  static propTypes = {
-    prop: PropTypes
-  };
-
-  componentDidMount() {
-    this.props.getScenarios();
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "80%",
+    backgroundColor: theme.palette.background.paper
   }
+}));
 
-  render() {
-    const { scenarios, deleteScenario, setActiveScenario } = this.props;
-    return (
-      <div>
+const ScenarioList = ({
+  scenarios,
+  getScenarios,
+  deleteScenario,
+  setActiveScenario
+}) => {
+  useEffect(() => {
+    getScenarios();
+  }, []);
+
+  const classes = useStyles();
+
+  return (
+    <Grid container item xs={6}>
+      <List classes={classes}>
         {scenarios.map(scenario => {
           return (
             <ScenarioListItem
@@ -24,7 +35,9 @@ export default class ScenarioList extends Component {
             />
           );
         })}
-      </div>
-    );
-  }
-}
+      </List>
+    </Grid>
+  );
+};
+
+export default ScenarioList;
