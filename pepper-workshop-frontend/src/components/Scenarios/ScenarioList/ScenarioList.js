@@ -6,8 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "80%",
-    backgroundColor: theme.palette.background.paper
+    width: "80%"
   }
 }));
 

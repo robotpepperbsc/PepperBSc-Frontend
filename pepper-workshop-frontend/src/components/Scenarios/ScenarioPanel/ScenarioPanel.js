@@ -49,6 +49,15 @@ const ScenarioPanel = ({ activeScenario, postScenario, modifyScenario }) => {
     setValues({ ...values, [name]: value });
   };
 
+  const newClearButonnDisabled = () => {
+    return (
+      values.newScenario &&
+      !values.name &&
+      !values.description &&
+      !values.actions.length === 0
+    );
+  };
+
   return (
     <Grid container item xs={6}>
       <Button
@@ -57,8 +66,9 @@ const ScenarioPanel = ({ activeScenario, postScenario, modifyScenario }) => {
         color="primary"
         className={classes.submit}
         onClick={handleNewScenario}
+        disabled={newClearButonnDisabled()}
       >
-        new scenario
+        {!values.newScenario ? "new scenario" : "clear new scenario"}
       </Button>
       {activeScenario || values.newScenario ? (
         <Fragment>

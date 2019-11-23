@@ -1,14 +1,16 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import Task from "./Task";
+import Task from "./Action";
+import Action from "./Action";
+import { List } from "@material-ui/core";
 
-const ScenarioActionList = ({ tasks }) => {
+const ScenarioActionList = ({ actions }) => {
   return (
-    <Fragment>
-      {tasks.map(task => (
-        <Task task={task} />
+    <List>
+      {actions.map((action, index) => (
+        <Action index={index} {...action} />
       ))}
-    </Fragment>
+    </List>
   );
 };
 
