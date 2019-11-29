@@ -3,6 +3,8 @@ export const SCENARIOS_RECEIVED = "SCENARIOS_RECEIVED";
 export const SET_ACTIVE_SCENARIO = "SET_ACTIVE_SCENARIO";
 export const DELETE_SCENARIO = "DELETE_SCENARIO";
 export const SET_ACTIVE_SCENARIO_SUCCESS = "SET_ACTIVE_SCENARIO_SUCCESS";
+export const START_NEW_SCENARIO = "START_NEW_SCENARIO";
+export const UPDATE_ACTIVE_SCENARIO = "UPDATE_ACTIVE_SCENARIO";
 
 export const getScenarios = () => ({
   type: GET_SCENARIOS
@@ -21,4 +23,14 @@ export const deleteScenario = name => ({
 export const setActiveScenarioSuccess = scenario => ({
   type: SET_ACTIVE_SCENARIO_SUCCESS,
   scenario
+});
+
+export const setNewScenario = () => ({
+  type: START_NEW_SCENARIO
+});
+
+export const updateActiveScenario = (field, value) => ({
+  type: UPDATE_ACTIVE_SCENARIO,
+  field,
+  value
 });

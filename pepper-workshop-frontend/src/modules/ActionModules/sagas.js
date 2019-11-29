@@ -9,9 +9,8 @@ import {
 import { setError } from "../Errors/actions";
 
 function* queueSpeech(action) {
-  const { text, volume, speechSpeed, language } = action;
   try {
-    yield call(api.queueSpeech(text, volume, speechSpeed, language));
+    yield call(api.queueSpeech, action.pepperAction);
   } catch (error) {
     console.log(error);
     yield put(setError(error));
@@ -19,9 +18,8 @@ function* queueSpeech(action) {
 }
 
 function* queueMove(action) {
-  const { command, length, angle } = action;
   try {
-    yield call(api.queueMove(command, length, angle));
+    yield call(api.queueMove, action.pepperAction);
   } catch (error) {
     console.log(error);
     yield put(setError(error));
@@ -31,7 +29,7 @@ function* queueMove(action) {
 function* queueSequence(action) {
   const { name } = action;
   try {
-    yield call(api.queueSequence(name));
+    yield call(api.queueSequence, action.pepperAction);
   } catch (error) {
     console.log(error);
     yield put(setError(error));
@@ -39,9 +37,8 @@ function* queueSequence(action) {
 }
 
 function* queueMedia(action) {
-  const { name, fileType } = action;
   try {
-    yield call(api.queueMedia(name, fileType));
+    yield call(api.queueMedia, action.pepperAction);
   } catch (error) {
     console.log(error);
     yield put(setError(error));

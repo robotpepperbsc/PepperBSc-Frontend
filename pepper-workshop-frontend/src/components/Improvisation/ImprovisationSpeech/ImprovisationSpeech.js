@@ -5,6 +5,7 @@ import axios from "axios";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import "./ImprovisationSpeech.scss";
 import SpeechSlider from "../../SpeechSlider/SpeechSlider";
+import { createSpeechAction } from "../pepperActionService";
 
 export default class ImprovisationSpeech extends Component {
   static propTypes = {
@@ -16,7 +17,8 @@ export default class ImprovisationSpeech extends Component {
     this.state = {
       speechInput: "",
       speechLoudness: 50,
-      speechSpeed: 50
+      speechSpeed: 50,
+      language: "Polish"
     };
   }
 
@@ -26,28 +28,23 @@ export default class ImprovisationSpeech extends Component {
   };
 
   handleSpeechPost = e => {
-    e.stopPropagation();
-    const url = "http://127.0.0.1:5000/speech";
-    const data = {
-      speech: this.state.speechInput
-    };
+    const { speechInput, speechLoudness, speechSpeed } = this.state;
+    const speechAction = createSpeechAction(
+      speechInput,
+      speechLoudness,
+      speechSpeed
+    );
 
-    axios
-      .post(url, data)
-      .then(response => {
-        this.setState({ loading: false });
-        if (response.status === 200) {
-          //go to TabMenu & senc IP address
-        } else {
-          throw new Error(response.status.toString());
-        }
-      })
-      .catch(error => {
-        if (error.response.status === 401) {
-        }
-        console.log("error " + error);
-      });
-    this.setState({ speechInput: "" });
+    if (this.props.addActionToScenario) {
+      this.props.addActionToScenario(speechAction);
+      this.setState({ speechInput: "" });
+      return;
+    }
+    if (this.props.queueSpeech) {
+      this.props.queueSpeech(speechAction);
+      this.setState({ speechInput: "" });
+      return;
+    }
   };
 
   handleLoudnessChange = value => {
@@ -71,7 +68,7 @@ export default class ImprovisationSpeech extends Component {
                 <Form.Control
                   name="speechInput"
                   as={"textarea"}
-                  onChange={this.handleChange}
+                  onChange={this.handleSpeechInput}
                 />
                 <Form.Control
                   className="loudness-slider"

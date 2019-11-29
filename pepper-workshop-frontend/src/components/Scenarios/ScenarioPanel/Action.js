@@ -9,28 +9,17 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-const Action = ({
-  index,
-  type,
-  text,
-  volume,
-  speech_speed,
-  language,
-  name,
-  file_type,
-  duration,
-  command,
-  length,
-  deleteAction
-}) => {
+const Action = ({ index, action, editAction, deleteAction }) => {
   const getName = () => {
-    return name || "";
+    return action.type || "";
   };
   const getSecondary = () => {
-    return text || "";
+    return action.text || "";
   };
 
-  const handleEditAction = () => {};
+  const handleEditAction = () => {
+    editAction(index, action);
+  };
 
   const handleDeleteAction = () => {
     deleteAction(index);
@@ -38,7 +27,7 @@ const Action = ({
 
   return (
     <ListItem onClick={handleEditAction}>
-      <ListItemText primary={getName} secondary={getSecondary} />
+      <ListItemText primary={getName()} secondary={getSecondary()} />
       <ListItemSecondaryAction>
         <IconButton aria-label="edit" onClick={handleEditAction}>
           <EditIcon />

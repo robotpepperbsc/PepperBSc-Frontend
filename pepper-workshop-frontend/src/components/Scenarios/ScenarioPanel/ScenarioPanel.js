@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import ScenarioHeader from "./ScenarioHeader";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Grid } from "@material-ui/core";
+import Popup from "reactjs-popup";
+import ImprovisationSpeech from "../../Improvisation/ImprovisationSpeech/ImprovisationSpeech";
+import ScenarioActionList from "./ScenarioActionList";
 
 const useStyles = makeStyles(theme => ({
   submit: {
@@ -10,52 +13,45 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ScenarioPanel = ({ activeScenario, postScenario, modifyScenario }) => {
+const ScenarioPanel = ({
+  activeScenario,
+  setNewScenario,
+  updateActiveScenario,
+  postScenario,
+  modifyScenario
+}) => {
   const classes = useStyles();
-
   const [values, setValues] = useState({
-    newScenario: true,
-    name: "",
-    description: "",
-    actions: []
+    open: false
   });
 
-  useEffect(() => {
-    setValues({
-      newScenario: false
-    });
-  }, [activeScenario]);
-
   const handleNewScenario = () => {
-    setValues({
-      newScenario: true,
-      name: "",
-      description: "",
-      actions: []
-    });
+    setNewScenario();
   };
 
   const handlePostScenario = () => {
-    const scenario = {
-      name: values.name,
-      description: values.description,
-      actions: values.actions
-    };
-    values.newScenario ? postScenario(scenario) : modifyScenario(scenario);
+    values.newScenario
+      ? postScenario(activeScenario)
+      : modifyScenario(activeScenario);
   };
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    updateActiveScenario(name, value);
   };
 
-  const newClearButonnDisabled = () => {
-    return (
-      values.newScenario &&
-      !values.name &&
-      !values.description &&
-      !values.actions.length === 0
-    );
+  const handleOpen = () => {
+    setValues({ ...values, open: true });
+  };
+
+  const handleClose = () => {
+    setValues({ ...values, open: false });
+  };
+
+  const addActionToScenario = action => {
+    const newActionsArray = [...activeScenario.actions, action];
+    updateActiveScenario("actions", newActionsArray);
+    handleClose();
   };
 
   return (
@@ -66,31 +62,52 @@ const ScenarioPanel = ({ activeScenario, postScenario, modifyScenario }) => {
         color="primary"
         className={classes.submit}
         onClick={handleNewScenario}
-        disabled={newClearButonnDisabled()}
       >
-        {!values.newScenario ? "new scenario" : "clear new scenario"}
+        {!activeScenario.isNew ? "new scenario" : "clear scenario"}
       </Button>
-      {activeScenario || values.newScenario ? (
-        <Fragment>
-          <ScenarioHeader
-            name={values.name}
-            description={values.description}
-            handleNameChange={handleChange}
-            handleDescriptionChange={handleChange}
-          />
+      <Fragment>
+        <ScenarioHeader
+          name={values.name}
+          description={values.description}
+          handleNameChange={handleChange}
+          handleDescriptionChange={handleChange}
+        />
+        <Button
+          fullWidth
+          variant="contained"
+          color="secondary"
+          className={classes.submit}
+          onClick={handleOpen}
+        >
+          add action
+        </Button>
+        <ScenarioActionList actions={activeScenario.actions} />
+        <Popup onClose={handleClose} open={values.open} modal>
+          <div>
+            <ImprovisationSpeech addActionToScenario={addActionToScenario} />
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={handleClose}
+            >
+              close modal
+            </Button>
+          </div>
+        </Popup>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={handlePostScenario}
-          >
-            save scenario
-          </Button>
-        </Fragment>
-      ) : null}
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+          onClick={handlePostScenario}
+        >
+          save scenario
+        </Button>
+      </Fragment>
     </Grid>
   );
 };

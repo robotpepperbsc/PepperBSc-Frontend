@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   getScenarios,
-  deleteScenario
+  deleteScenario,
+  setNewScenario,
+  updateActiveScenario
 } from "../../../modules/Scenarios/actions";
 import ScenarioPanel from "./ScenarioPanel";
 
@@ -12,6 +14,13 @@ const mapStateToProps = state => ({
   loading: state.scenarios.loading
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  setNewScenario: () => {
+    dispatch(setNewScenario());
+  },
+  updateActiveScenario: (field, value) => {
+    dispatch(updateActiveScenario(field, value));
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScenarioPanel);

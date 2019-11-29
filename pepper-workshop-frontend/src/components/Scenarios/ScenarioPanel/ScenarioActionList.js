@@ -3,12 +3,20 @@ import PropTypes from "prop-types";
 import Task from "./Action";
 import Action from "./Action";
 import { List } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
-const ScenarioActionList = ({ actions }) => {
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%"
+  }
+}));
+
+const ScenarioActionList = ({ actions, editAction, deleteAction }) => {
+  const classes = useStyles();
   return (
-    <List>
+    <List classes={classes}>
       {actions.map((action, index) => (
-        <Action index={index} {...action} />
+        <Action index={index} action={action} />
       ))}
     </List>
   );

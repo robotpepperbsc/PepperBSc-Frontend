@@ -3,28 +3,22 @@ export const QUEUE_MOVE = "QUEUE_MOVE";
 export const QUEUE_SEQUENCE = "QUEUE_SEQUENCE";
 export const QUEUE_MEDIA = "QUEUE_MEDIA";
 
-export const queueSpeech = (text, volume, speechSpeed, language) => ({
+export const queueSpeech = action => ({
   type: QUEUE_SPEECH,
-  text,
-  volume,
-  speechSpeed,
-  language
+  pepperAction: action
 });
 
-export const queueMove = (command, length, angle) => ({
+export const queueMove = action => ({
   type: QUEUE_MOVE,
-  command,
-  length,
-  angle
+  pepperAction: action
 });
 
-export const queueSequence = name => ({
+export const queueSequence = action => ({
   type: QUEUE_SEQUENCE,
-  name
+  pepperAction: action
 });
 
-export const queueMedia = (name, fileType) => ({
+export const queueMedia = action => ({
   type: QUEUE_MEDIA,
-  name,
-  fileType
+  pepperAction: action
 });
