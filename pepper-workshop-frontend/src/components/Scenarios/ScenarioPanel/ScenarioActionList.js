@@ -16,7 +16,12 @@ const ScenarioActionList = ({ actions, editAction, deleteAction }) => {
   return (
     <List classes={classes}>
       {actions.map((action, index) => (
-        <Action index={index} action={action} />
+        <Action
+          index={index}
+          action={action}
+          editAction={editAction}
+          deleteAction={deleteAction}
+        />
       ))}
     </List>
   );

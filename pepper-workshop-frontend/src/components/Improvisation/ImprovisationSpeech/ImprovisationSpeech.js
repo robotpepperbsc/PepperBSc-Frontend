@@ -5,7 +5,7 @@ import axios from "axios";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import "./ImprovisationSpeech.scss";
 import SpeechSlider from "../../SpeechSlider/SpeechSlider";
-import { createSpeechAction } from "../pepperActionService";
+import { createSpeechAction, pepperActionType } from "../pepperActionService";
 
 export default class ImprovisationSpeech extends Component {
   static propTypes = {
@@ -22,18 +22,36 @@ export default class ImprovisationSpeech extends Component {
     };
   }
 
+  componentDidMount() {
+    const action = this.props.action;
+    if (action) {
+      this.setState({
+        speechInput: action.text,
+        speechLoudness: action.volume,
+        speechSpeed: action.speechSpeed,
+        language: action.language
+      });
+    }
+  }
+
   handleSpeechInput = e => {
     e.stopPropagation();
     this.setState({ speechInput: e.target.value });
   };
 
   handleSpeechPost = e => {
-    const { speechInput, speechLoudness, speechSpeed } = this.state;
+    const { speechInput, speechLoudness, speechSpeed, language } = this.state;
     const speechAction = createSpeechAction(
       speechInput,
       speechLoudness,
-      speechSpeed
+      speechSpeed,
+      language
     );
+    if (this.props.action && this.props.saveEditedAction) {
+      this.props.saveEditedAction();
+      this.setState({ speechInput: "" });
+      return;
+    }
 
     if (this.props.addActionToScenario) {
       this.props.addActionToScenario(speechAction);
@@ -68,6 +86,7 @@ export default class ImprovisationSpeech extends Component {
                 <Form.Control
                   name="speechInput"
                   as={"textarea"}
+                  value={this.state.speechInput}
                   onChange={this.handleSpeechInput}
                 />
                 <Form.Control

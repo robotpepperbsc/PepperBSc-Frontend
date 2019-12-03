@@ -1,6 +1,13 @@
+export const pepperActionType = {
+  speech: "speech",
+  generic: "generic",
+  sequence: "sequence",
+  media: "media"
+};
+
 export const createSpeechAction = (text, volume, speechSpeed, language) => {
   return {
-    type: "speech",
+    type: pepperActionType.speech,
     text: text,
     volume: volume,
     speechSpeed: speechSpeed,
@@ -17,21 +24,21 @@ const commandType = {
 
 export const createMoveAction = command => {
   return {
-    type: "generic",
+    type: pepperActionType.generic,
     command: commandType[command]
   };
 };
 
 export const createSequenceAction = name => {
   return {
-    type: "sequence",
+    type: pepperActionType.sequence,
     name: name
   };
 };
 
 export const createMediaAction = (name, fileType) => {
   return {
-    type: "media",
+    type: pepperActionType.media,
     name: name,
     file_type: fileType
   };

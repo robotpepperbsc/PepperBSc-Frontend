@@ -6,6 +6,10 @@ import { Button, Grid } from "@material-ui/core";
 import Popup from "reactjs-popup";
 import ImprovisationSpeech from "../../Improvisation/ImprovisationSpeech/ImprovisationSpeech";
 import ScenarioActionList from "./ScenarioActionList";
+import ImprovisationMoveList from "../../Improvisation/ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveList";
+import ImprovisationMoveManual from "../../Improvisation/ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";
+import MediaContainer from "../../ Media/MediaContainer";
+import { pepperActionType } from "../../Improvisation/pepperActionService";
 
 const useStyles = makeStyles(theme => ({
   submit: {
@@ -15,6 +19,9 @@ const useStyles = makeStyles(theme => ({
 
 const ScenarioPanel = ({
   activeScenario,
+  currentEditedAction,
+  setEditedAction,
+  saveEditedAction,
   setNewScenario,
   updateActiveScenario,
   postScenario,
@@ -22,7 +29,9 @@ const ScenarioPanel = ({
 }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
-    open: false
+    open: false,
+    currentEditedActionIndex: null,
+    currentEditedAction: null
   });
 
   const handleNewScenario = () => {
@@ -54,6 +63,23 @@ const ScenarioPanel = ({
     handleClose();
   };
 
+  const handleEditAction = (index, action) => {
+    console.log(action);
+    setEditedAction(index, action);
+    handleOpen();
+  };
+
+  const handleSaveEditedAction = () => {
+    saveEditedAction();
+    handleClose();
+  };
+
+  const handleDeleteAction = index => {
+    const newActionsArray = [...activeScenario.actions];
+    newActionsArray.splice(index, 1);
+    updateActiveScenario("actions", newActionsArray);
+  };
+
   return (
     <Grid container item xs={6}>
       <Button
@@ -81,10 +107,60 @@ const ScenarioPanel = ({
         >
           add action
         </Button>
-        <ScenarioActionList actions={activeScenario.actions} />
+        <ScenarioActionList
+          actions={activeScenario.actions}
+          editAction={handleEditAction}
+          deleteAction={handleDeleteAction}
+        />
         <Popup onClose={handleClose} open={values.open} modal>
           <div>
-            <ImprovisationSpeech addActionToScenario={addActionToScenario} />
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={handleOpen}
+            >
+              speech
+            </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={handleOpen}
+            >
+              sequence
+            </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={handleOpen}
+            >
+              move
+            </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={handleOpen}
+            >
+              media
+            </Button>
+            <ImprovisationSpeech
+              saveEditedAction={handleSaveEditedAction}
+              action={currentEditedAction}
+              addActionToScenario={addActionToScenario}
+            />
+            <ImprovisationMoveList addActionToScenario={addActionToScenario} />
+            <ImprovisationMoveManual
+              addActionToScenario={addActionToScenario}
+            />
+            <MediaContainer addActionToScenario={addActionToScenario} />
+
             <Button
               fullWidth
               variant="contained"

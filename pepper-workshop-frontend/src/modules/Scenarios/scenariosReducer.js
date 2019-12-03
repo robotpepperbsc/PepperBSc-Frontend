@@ -4,7 +4,9 @@ import {
   SET_ACTIVE_SCENARIO,
   SET_ACTIVE_SCENARIO_SUCCESS,
   START_NEW_SCENARIO,
-  UPDATE_ACTIVE_SCENARIO
+  UPDATE_ACTIVE_SCENARIO,
+  SET_EDITED_ACTION,
+  SAVE_EDITED_ACTION
 } from "./actions";
 
 const initialState = {
@@ -14,6 +16,7 @@ const initialState = {
     description: "",
     actions: []
   },
+  currentEditedAction: null,
   loading: false
 };
 
@@ -51,6 +54,24 @@ export default function scenariosReducer(state = initialState, action) {
             [action.field]: action.value
           }
         )
+      };
+    case SET_EDITED_ACTION:
+      return {
+        ...state,
+        currentEditedAction: action.action,
+        currentEditedActionIndex: action.index
+      };
+    case SAVE_EDITED_ACTION:
+      const newActionList = [...state.activeScenario.actions];
+      newActionList[action.index] = action.action;
+      return {
+        ...state,
+        activeScenario: Object.assign(
+          {},
+          { ...state.activeScenario },
+          { actions: newActionList }
+        ),
+        currentEditedAction: null
       };
     default:
       return state;

@@ -5,6 +5,18 @@ export const DELETE_SCENARIO = "DELETE_SCENARIO";
 export const SET_ACTIVE_SCENARIO_SUCCESS = "SET_ACTIVE_SCENARIO_SUCCESS";
 export const START_NEW_SCENARIO = "START_NEW_SCENARIO";
 export const UPDATE_ACTIVE_SCENARIO = "UPDATE_ACTIVE_SCENARIO";
+export const SAVE_EDITED_ACTION = "SAVE_EDITED_ACTION";
+export const SET_EDITED_ACTION = "SET_EDITED_ACTION";
+
+export const setEditedAction = (index, action) => ({
+  type: SET_EDITED_ACTION,
+  index,
+  action
+});
+
+export const saveEditedAction = () => ({
+  type: SAVE_EDITED_ACTION
+});
 
 export const getScenarios = () => ({
   type: GET_SCENARIOS
