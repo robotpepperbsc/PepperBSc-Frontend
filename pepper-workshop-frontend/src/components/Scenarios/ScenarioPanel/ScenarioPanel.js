@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import ScenarioHeader from "./ScenarioHeader";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid, Tabs, Tab, Paper } from "@material-ui/core";
 import Popup from "reactjs-popup";
 import ImprovisationSpeech from "../../Improvisation/ImprovisationSpeech/ImprovisationSpeech";
 import ScenarioActionList from "./ScenarioActionList";
@@ -30,8 +30,7 @@ const ScenarioPanel = ({
   const classes = useStyles();
   const [values, setValues] = useState({
     open: false,
-    currentEditedActionIndex: null,
-    currentEditedAction: null
+    editedActionType: null
   });
 
   const handleNewScenario = () => {
@@ -80,6 +79,11 @@ const ScenarioPanel = ({
     updateActiveScenario("actions", newActionsArray);
   };
 
+  const setEditedActionType = type => {
+    console.log(type);
+    setValues({ ...values, editedActionType: type });
+  };
+
   return (
     <Grid container item xs={6}>
       <Button
@@ -113,53 +117,65 @@ const ScenarioPanel = ({
           deleteAction={handleDeleteAction}
         />
         <Popup onClose={handleClose} open={values.open} modal>
-          <div>
-            <Button
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={handleOpen}
+          <Paper>
+            <Tabs
+              value={values.editedActionType}
+              onChange={setValues}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
             >
-              speech
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={handleOpen}
-            >
-              sequence
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={handleOpen}
-            >
-              move
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={handleOpen}
-            >
-              media
-            </Button>
-            <ImprovisationSpeech
-              saveEditedAction={handleSaveEditedAction}
-              action={currentEditedAction}
-              addActionToScenario={addActionToScenario}
-            />
-            <ImprovisationMoveList addActionToScenario={addActionToScenario} />
-            <ImprovisationMoveManual
-              addActionToScenario={addActionToScenario}
-            />
-            <MediaContainer addActionToScenario={addActionToScenario} />
+              <Tab
+                value={pepperActionType.speech}
+                label={"speech"}
+                onClick={() => setEditedActionType(pepperActionType.speech)}
+              />
+              <Tab
+                value={pepperActionType.sequence}
+                label={"sequence"}
+                onClick={() => setEditedActionType(pepperActionType.sequence)}
+              />
+              <Tab
+                value={pepperActionType.generic}
+                label={"generic move"}
+                onClick={() => setEditedActionType(pepperActionType.generic)}
+              />
+              <Tab
+                value={pepperActionType.media}
+                label={"media"}
+                onClick={() => setEditedActionType(pepperActionType.media)}
+              />
+            </Tabs>
+            {values.editedActionType === pepperActionType.speech ? (
+              <ImprovisationSpeech
+                saveEditedAction={handleSaveEditedAction}
+                action={currentEditedAction}
+                addActionToScenario={addActionToScenario}
+              />
+            ) : null}
+            {values.editedActionType === pepperActionType.sequence ? (
+              <ImprovisationMoveList
+                saveEditedAction={handleSaveEditedAction}
+                action={currentEditedAction}
+                addActionToScenario={addActionToScenario}
+              />
+            ) : null}
+            {values.editedActionType === pepperActionType.generic ? (
+              <ImprovisationMoveManual
+                saveEditedAction={handleSaveEditedAction}
+                action={currentEditedAction}
+                addActionToScenario={addActionToScenario}
+              />
+            ) : null}
+            {
+              (values.editedActionType = pepperActionType.media ? (
+                <MediaContainer
+                  saveEditedAction={handleSaveEditedAction}
+                  action={currentEditedAction}
+                  addActionToScenario={addActionToScenario}
+                />
+              ) : null)
+            }
 
             <Button
               fullWidth
@@ -170,7 +186,7 @@ const ScenarioPanel = ({
             >
               close modal
             </Button>
-          </div>
+          </Paper>
         </Popup>
 
         <Button
