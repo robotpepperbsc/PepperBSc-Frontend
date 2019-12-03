@@ -3,21 +3,24 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
+  border: 2px solid #665656;
+  border-radius: 5px;
+  padding: 10px;
 }
 .moves-container {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-height: 250px;
+  max-height: 400px;
   overflow-y: auto;
 }
 .move {
-  height: 40px;
-  padding: 10px 5px;
-  border: 2px solid #665656;
-  border-radius: 5px;
-  margin: 20px;
+  border: 2px solid #1c6ea4 !important;
+  border-radius: 3px !important;
+  margin: 10px 0 !important;
+
   &.selected {
     background-color: azure;
     border: 2px solid #1c6ea4;
-    border-radius: 5px;
   }
 }

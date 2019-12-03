@@ -10,6 +10,7 @@ import ImprovisationMoveList from "../../Improvisation/ImprovisationMoves/Improv
 import ImprovisationMoveManual from "../../Improvisation/ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";
 import MediaContainer from "../../ Media/MediaContainer";
 import { pepperActionType } from "../../Improvisation/pepperActionService";
+import "./ScenarioPanel.scss";
 
 const useStyles = makeStyles(theme => ({
   submit: {
@@ -89,7 +90,6 @@ const ScenarioPanel = ({
       <Button
         fullWidth
         variant="contained"
-        color="primary"
         className={classes.submit}
         onClick={handleNewScenario}
       >
@@ -105,7 +105,6 @@ const ScenarioPanel = ({
         <Button
           fullWidth
           variant="contained"
-          color="secondary"
           className={classes.submit}
           onClick={handleOpen}
         >
@@ -180,7 +179,6 @@ const ScenarioPanel = ({
             <Button
               fullWidth
               variant="contained"
-              color="secondary"
               className={classes.submit}
               onClick={handleClose}
             >
@@ -193,7 +191,6 @@ const ScenarioPanel = ({
           type="submit"
           fullWidth
           variant="contained"
-          color="primary"
           className={classes.submit}
           onClick={handlePostScenario}
         >

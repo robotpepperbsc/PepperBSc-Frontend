@@ -2,10 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { Form, Row, Col, Container, Dropdown } from "react-bootstrap";
 import "./ImprovisationSpeech.scss";
 import SpeechSlider from "../../SpeechSlider/SpeechSlider";
 import { createSpeechAction, pepperActionType } from "../pepperActionService";
+import { Button } from "@material-ui/core";
+
+const languages = {
+  english: "English",
+  polish: "Polish",
+  french: "French",
+  German: "German"
+};
 
 export default class ImprovisationSpeech extends Component {
   static propTypes = {
@@ -75,12 +83,16 @@ export default class ImprovisationSpeech extends Component {
 
   render() {
     return (
-      <Form>
-        <Form.Group bsPrefix="form-group" as={Row} controlId="speechInput">
+      <Form className={"improvisation-speech-container"}>
+        <Form.Group
+          bsPrefix="form-group speech-form"
+          as={Row}
+          controlId="speechInput"
+        >
           <Container fluid>
             <Row className="justify-content-md-center">
               <Col className="improvisation-speech">
-                <Form.Label className={"improvisation header"} column sm="2">
+                <Form.Label className={"improvisation header"}>
                   Enter speech
                 </Form.Label>
                 <Form.Control
@@ -89,19 +101,37 @@ export default class ImprovisationSpeech extends Component {
                   value={this.state.speechInput}
                   onChange={this.handleSpeechInput}
                 />
+                <Form.Label>
+                  set loudness (current value: {this.state.speechLoudness})
+                </Form.Label>
                 <Form.Control
                   className="loudness-slider"
                   name="speechLodunessinput"
                   as={SpeechSlider}
                   onLoudnessChange={this.handleLoudnessChange}
                 />
+                <Form.Label>
+                  set speech speed (current value: {this.state.speechSpeed})
+                </Form.Label>
                 <Form.Control
                   className="loudness-slider"
                   name="speechLodunessinput"
                   as={SpeechSlider}
                   onLoudnessChange={this.handleSpeechSpeedChange}
                 />
+                <Form.Label>set language</Form.Label>
+                <Form.Control
+                  name="speechLanguage"
+                  as={"select"}
+                  id={"select"}
+                  onChange={e => console.log(e.target.value)}
+                >
+                  {Object.values(languages).map(language => (
+                    <option>{language}</option>
+                  ))}
+                </Form.Control>
                 <Button
+                  variant={"contained"}
                   className={"improvisation"}
                   onClick={this.handleSpeechPost}
                 >

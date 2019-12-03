@@ -1,3 +1,5 @@
+@import "../../GlobalStyleVariables.scss";
+
 .nav-button {
   height: 3rem;
   min-width: 12rem;
@@ -9,4 +11,16 @@
 }
 
 .navbar {
+}
+
+.btn-dark {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-dark:not(:disabled):not(.disabled).active,
+.btn-dark:not(:disabled):not(.disabled):active,
+.show > .btn-dark.dropdown-toggle {
+  background-color: #28373e;
+  border-color: #28373e;
 }

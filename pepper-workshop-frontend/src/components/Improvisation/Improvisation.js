@@ -20,7 +20,6 @@ export default class Improvisation extends Component {
   render() {
     return (
       <div>
-        <ImprovisationNavbar />
         <div className="improvisation-container">
           <Container>
             <Row>

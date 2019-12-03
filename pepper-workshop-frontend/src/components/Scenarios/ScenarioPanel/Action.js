@@ -14,7 +14,7 @@ const Action = ({ index, action, editAction, deleteAction }) => {
     return action.type || "";
   };
   const getSecondary = () => {
-    return action.text || "";
+    return action.text || action.name;
   };
 
   const handleEditAction = () => {

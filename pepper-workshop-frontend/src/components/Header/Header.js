@@ -24,6 +24,11 @@ const Header = () => {
               Media
             </Button>
           </Link>
+          <Link to="/recordings">
+            <Button className="nav-button" variant="dark">
+              Recordings
+            </Button>
+          </Link>
           <Link to="/settings">
             <Button className="nav-button" variant="dark">
               Settings

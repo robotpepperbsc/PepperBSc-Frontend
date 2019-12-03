@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import configureStore from "./modules/configureStore";
 import MediaContainer from "./components/ Media/MediaContainer";
 import ScenariosContainer from "./components/Scenarios/ScenariosContainer";
+import Recordings from "./components/Recordings/Recordings";
 
 const store = configureStore();
 
@@ -25,6 +26,7 @@ class App extends React.Component {
                 <Route path="/improvisation" component={Improvisation} />
                 <Route path="/scenarios" component={ScenariosContainer} />
                 <Route path="/media" component={MediaContainer} />
+                <Route path="/recordings" component={Recordings} />
               </Switch>
             </div>
           </Router>

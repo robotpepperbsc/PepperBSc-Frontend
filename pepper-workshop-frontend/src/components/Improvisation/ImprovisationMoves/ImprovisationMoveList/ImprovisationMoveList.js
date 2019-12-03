@@ -1,61 +1,78 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Dropdown, Button } from "react-bootstrap";
 import classNames from "classnames";
 import "./ImprovisationMoveList.scss";
+import { List, Button, ListItem, ListItemText } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
-export default class ImprovisationMoveList extends Component {
-  static propTypes = {
-    prop: PropTypes
-  };
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      seletectedMove: { label: "test" },
-      moves: [
-        { label: "test" },
-        { label: "test 2" },
-        { label: "test 3" },
-        { label: "test move 2" }
-      ]
-    };
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "80%"
   }
+}));
 
-  componentDidMount() {
-    //fetch moves
-  }
+const ImprovisationMoveList = ({ action }) => {
+  const [values, setValues] = useState({
+    seletectedMove: { name: "test", description: "xddd" },
+    moves: [
+      { name: "test2", description: "111" },
+      { name: "test3", description: "22" },
+      { name: "test4", description: "333" },
+      { name: "test5", description: "dddd" }
+    ]
+  });
 
-  selectMove = move => {
-    this.setState({ seletectedMove: move });
+  useEffect(() => {
+    if (action) {
+      setValues({ ...values, seletectedMove: action });
+      return;
+    }
+  }, [action]);
+  //fetch moves
+  const selectMove = move => {
+    setValues({ ...values, seletectedMove: move });
   };
 
-  handlePostMove = e => {
+  const handlePostMove = e => {
     e.stopPropagation();
     //post selectedMove
   };
+  const classes = useStyles();
+  const moves = values.moves;
 
-  render() {
-    const moves = this.state.moves;
-    return (
-      <div className={"improvisation-move-container"}>
-        <div className={"improvisation header"}>Choose move</div>
-        <div className={"moves-container"}>
+  return (
+    <div className={"improvisation-move-container"}>
+      <div className={"improvisation header"}>Choose move</div>
+      <div className={"moves-container"}>
+        <List classes={classes}>
           {moves.map(move => {
             const className = classNames("move", {
-              selected: move.label === this.state.seletectedMove.label
+              selected: move.name === values.seletectedMove.name
             });
             return (
-              <div className={className} onClick={e => this.selectMove(move)}>
-                {move.label}
-              </div>
+              <ListItem
+                button
+                className={className}
+                onClick={e => selectMove(move)}
+              >
+                <ListItemText
+                  primary={move.name}
+                  secondary={move.description}
+                />
+              </ListItem>
             );
           })}
-        </div>
-        <Button className={"improvisation"} onClick={this.handlePostMove}>
-          Post move
-        </Button>
+        </List>
       </div>
-    );
-  }
-}
+      <Button
+        variant="contained"
+        className={"improvisation"}
+        onClick={handlePostMove}
+      >
+        Post move
+      </Button>
+    </div>
+  );
+};
+
+export default ImprovisationMoveList;

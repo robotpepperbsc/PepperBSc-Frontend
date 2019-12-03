@@ -6,6 +6,7 @@ import turnLeft from "../../../../assets/moveArrows/rotate-left.svg";
 import turnRight from "../../../../assets/moveArrows/rotate-right.png";
 import upArrow from "../../../../assets/moveArrows/up-arrow.svg";
 import "./ImprovisationMoveManual.scss";
+import classNames from "classnames";
 
 export default class ImprovisationMoveManual extends Component {
   static propTypes = {
@@ -40,32 +41,50 @@ export default class ImprovisationMoveManual extends Component {
     this.setState({ selectedMove: "left" });
   };
 
+  sendClearMove = e => {
+    e.stopPropagation();
+    //sendmove
+    this.setState({ selectedMove: null });
+  };
+
   render() {
     return (
       <div className="improvisation-move-manual-container">
         <div>
           <Image
-            onClick={this.handleSelectArrowUp}
-            className={"arrow up"}
+            onMouseDown={this.handleSelectArrowUp}
+            onMouseUp={this.sendClearMove}
+            className={classNames("arrow up", {
+              selected: this.state.selectedMove === "up"
+            })}
             src={upArrow}
           ></Image>
         </div>
         <div>
           <Image
-            onClick={this.handleSelectArrowLeft}
-            className={"arrow left"}
+            onMouseDown={this.handleSelectArrowLeft}
+            onMouseUp={this.sendClearMove}
+            className={classNames("arrow left", {
+              selected: this.state.selectedMove === "left"
+            })}
             src={turnLeft}
           ></Image>
           <Image
-            onClick={this.handleSelectArrowRight}
-            className={"arrow right"}
+            onMouseDown={this.handleSelectArrowRight}
+            onMouseUp={this.sendClearMove}
+            className={classNames("arrow right", {
+              selected: this.state.selectedMove === "right"
+            })}
             src={turnRight}
           ></Image>
         </div>
         <div>
           <Image
-            onClick={this.handleSelectArrowDown}
-            className={"arrow down"}
+            onMouseDown={this.handleSelectArrowDown}
+            onMouseUp={this.sendClearMove}
+            className={classNames("arrow down", {
+              selected: this.state.selectedMove === "back"
+            })}
             src={downArrow}
           ></Image>
         </div>
