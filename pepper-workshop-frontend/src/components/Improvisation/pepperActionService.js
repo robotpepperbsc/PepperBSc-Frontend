@@ -1,6 +1,6 @@
 export const pepperActionType = {
   speech: "speech",
-  generic: "generic",
+  generic: "movement",
   sequence: "sequence",
   media: "media"
 };

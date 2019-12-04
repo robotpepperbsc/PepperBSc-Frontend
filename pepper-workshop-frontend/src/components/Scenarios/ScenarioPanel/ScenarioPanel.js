@@ -115,7 +115,12 @@ const ScenarioPanel = ({
           editAction={handleEditAction}
           deleteAction={handleDeleteAction}
         />
-        <Popup onClose={handleClose} open={values.open} modal>
+        <Popup
+          className={"scenario-add-action-popup"}
+          onClose={handleClose}
+          open={values.open}
+          modal
+        >
           <Paper>
             <Tabs
               value={values.editedActionType}
