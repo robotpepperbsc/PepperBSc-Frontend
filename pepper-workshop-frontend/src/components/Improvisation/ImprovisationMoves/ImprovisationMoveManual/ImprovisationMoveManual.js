@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { Image } from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import downArrow from "../../../../assets/moveArrows/down-arrow.svg";
 import turnLeft from "../../../../assets/moveArrows/rotate-left.svg";
 import turnRight from "../../../../assets/moveArrows/rotate-right.png";

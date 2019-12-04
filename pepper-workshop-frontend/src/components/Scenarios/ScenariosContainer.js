@@ -1,8 +1,7 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React from "react";
+import {connect} from "react-redux";
 import Scenarios from "./Scenarios";
-import { getScenarios } from "../../modules/Scenarios/actions";
+import {getScenarios} from "../../modules/Scenarios/actions";
 
 const mapStateToProps = state => ({
   scenarios: state.scenarios.scenarios,

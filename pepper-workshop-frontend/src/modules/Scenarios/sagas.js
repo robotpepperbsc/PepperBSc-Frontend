@@ -1,13 +1,14 @@
-import { put, takeEvery, all, call, takeLatest } from "redux-saga/effects";
+import {all, call, put, takeEvery, takeLatest} from "redux-saga/effects";
 import * as api from "./api";
 import {
-  GET_SCENARIOS,
-  SCENARIOS_RECEIVED,
-  SET_ACTIVE_SCENARIO,
-  setActiveScenarioSuccess,
-  DELETE_SCENARIO
+    DELETE_SCENARIO,
+    GET_SCENARIOS,
+    SCENARIOS_RECEIVED,
+    SET_ACTIVE_SCENARIO,
+    setActiveScenarioSuccess
 } from "./actions";
-import { setError } from "../Errors/actions";
+import {setError} from "../Errors/actions";
+
 function* getScenarios() {
   try {
     const scenarios = yield call(api.fetchScenarios);

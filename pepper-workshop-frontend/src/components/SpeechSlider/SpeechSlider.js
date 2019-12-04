@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Slider, Rail, Handles, Tracks } from "react-compound-slider";
-import { SliderRail, Handle, Track } from "./SliderMiscComponents";
+import React, {Component} from "react";
+import {Handles, Rail, Slider, Tracks} from "react-compound-slider";
+import {Handle, SliderRail, Track} from "./SliderMiscComponents";
 
 const sliderStyle = {
   position: "relative",

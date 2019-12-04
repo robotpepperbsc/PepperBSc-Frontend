@@ -1,7 +1,8 @@
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import {all, call, put, takeEvery} from "redux-saga/effects";
 import * as api from "./api";
-import { GET_NOTES, NOTES_RECEIVED } from "./actions";
-import { setError } from "../Errors/actions";
+import {GET_NOTES, NOTES_RECEIVED} from "./actions";
+import {setError} from "../Errors/actions";
+
 function* getNotes() {
   try {
     const notes = yield call(api.fetchNotes);

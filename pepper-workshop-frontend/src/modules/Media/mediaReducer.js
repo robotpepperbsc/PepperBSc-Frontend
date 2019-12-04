@@ -1,4 +1,4 @@
-import { GET_MEDIA, MEDIA_RECEIVED } from "./actions";
+import {GET_MEDIA, MEDIA_RECEIVED} from "./actions";
 
 const initialState = {
   media: [],

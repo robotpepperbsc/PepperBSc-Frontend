@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment
-} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Image, Message, Segment} from "semantic-ui-react";
 import headLogo from "../../assets/pepper_head_logo.png";
 import "./ConnectionToRobot.sass";
 import axios from "axios";

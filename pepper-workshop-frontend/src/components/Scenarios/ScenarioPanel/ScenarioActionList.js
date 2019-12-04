@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import Task from "./Action";
+import React from "react";
 import Action from "./Action";
-import { List } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import {List} from "@material-ui/core";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {

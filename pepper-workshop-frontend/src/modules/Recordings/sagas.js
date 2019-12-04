@@ -1,7 +1,8 @@
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import {all, call, put, takeEvery} from "redux-saga/effects";
 import * as api from "./api";
-import { GET_RECORDINGS, RECORDINGS_RECEIVED } from "./actions";
-import { setError } from "../Errors/actions";
+import {GET_RECORDINGS, RECORDINGS_RECEIVED} from "./actions";
+import {setError} from "../Errors/actions";
+
 function* getRecordings() {
   try {
     const recordings = yield call(api.fetchRecordings);

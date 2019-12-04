@@ -1,8 +1,7 @@
-import React, { Component, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, {useEffect} from "react";
 import ScenarioListItem from "./ScenarioListItem";
-import { Grid, GridList, List } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {Grid, List} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -1,7 +1,4 @@
-import {
-  pepperActionType,
-  commandType
-} from "../../components/Improvisation/pepperActionService";
+import {commandType, pepperActionType} from "../../components/Improvisation/pepperActionService";
 
 export function fetchScenarios() {
   // return fetch("/notes").then(response =>

@@ -1,12 +1,7 @@
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import {all, call, put, takeEvery} from "redux-saga/effects";
 import * as api from "./api";
-import {
-  QUEUE_SPEECH,
-  QUEUE_MOVE,
-  QUEUE_SEQUENCE,
-  QUEUE_MEDIA
-} from "./actions";
-import { setError } from "../Errors/actions";
+import {QUEUE_MEDIA, QUEUE_MOVE, QUEUE_SEQUENCE, QUEUE_SPEECH} from "./actions";
+import {setError} from "../Errors/actions";
 
 function* queueSpeech(action) {
   try {

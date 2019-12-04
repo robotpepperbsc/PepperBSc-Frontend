@@ -1,4 +1,4 @@
-import { GET_RECORDINGS, RECORDINGS_RECEIVED } from "./actions";
+import {GET_RECORDINGS, RECORDINGS_RECEIVED} from "./actions";
 
 const initialState = {
   recordings: [],

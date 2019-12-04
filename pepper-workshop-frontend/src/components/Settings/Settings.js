@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Form, Row, Col, Container, Button } from "react-bootstrap";
+import React, {Component} from "react";
+import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import SpeechSlider from "../SpeechSlider/SpeechSlider";
 import "./Settings.scss";
 import axios from "axios";

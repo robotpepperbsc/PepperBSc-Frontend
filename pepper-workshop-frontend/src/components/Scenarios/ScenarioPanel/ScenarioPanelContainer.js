@@ -1,11 +1,10 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React from "react";
+import {connect} from "react-redux";
 import {
-  setEditedAction,
-  saveEditedAction,
-  setNewScenario,
-  updateActiveScenario
+    saveEditedAction,
+    setEditedAction,
+    setNewScenario,
+    updateActiveScenario
 } from "../../../modules/Scenarios/actions";
 import ScenarioPanel from "./ScenarioPanel";
 

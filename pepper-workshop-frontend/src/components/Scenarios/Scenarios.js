@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import PropTypes from "prop-types";
-import ScenarioList from "./ScenarioList/ScenarioList";
-import ScenarioPanel from "./ScenarioPanel/ScenarioPanel";
 import ScenarioListContainer from "./ScenarioList/ScenarioListContainer";
 import ScenarioPanelContainer from "./ScenarioPanel/ScenarioPanelContainer";
-import { Container, Grid } from "@material-ui/core";
+import {Container, Grid} from "@material-ui/core";
 
 export default class Scenarios extends Component {
   static propTypes = {

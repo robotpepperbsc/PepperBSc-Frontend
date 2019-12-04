@@ -1,15 +1,15 @@
-import React, { useState, useEffect, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, {Fragment, useState} from "react";
 import ScenarioHeader from "./ScenarioHeader";
-import { makeStyles } from "@material-ui/core/styles";
-import { Button, Grid, Tabs, Tab, Paper } from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import {Button, Grid, Paper, Tab, Tabs} from "@material-ui/core";
 import Popup from "reactjs-popup";
 import ImprovisationSpeech from "../../Improvisation/ImprovisationSpeech/ImprovisationSpeech";
 import ScenarioActionList from "./ScenarioActionList";
 import ImprovisationMoveList from "../../Improvisation/ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveList";
-import ImprovisationMoveManual from "../../Improvisation/ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";
+import ImprovisationMoveManual
+    from "../../Improvisation/ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";
 import MediaContainer from "../../ Media/MediaContainer";
-import { pepperActionType } from "../../Improvisation/pepperActionService";
+import {pepperActionType} from "../../Improvisation/pepperActionService";
 import "./ScenarioPanel.scss";
 
 const useStyles = makeStyles(theme => ({

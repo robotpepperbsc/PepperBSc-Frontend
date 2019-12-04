@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Container, Navbar, Button, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import {Button, Nav, Navbar} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import "./ImprovisationNavbar.scss";
 
 export default class ImprovisationNavbar extends Component {

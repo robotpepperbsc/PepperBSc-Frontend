@@ -1,12 +1,6 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import {
-  getRecordings,
-  playRecording,
-  startRecording,
-  stopRecording
-} from "../../modules/Recordings/actions";
+import React from "react";
+import {connect} from "react-redux";
+import {getRecordings, playRecording, startRecording, stopRecording} from "../../modules/Recordings/actions";
 import Recordings from "./Recordings";
 
 const mapStateToProps = state => ({

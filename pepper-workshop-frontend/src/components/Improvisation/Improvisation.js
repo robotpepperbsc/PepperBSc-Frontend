@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import ImprovisationNavbar from "../ImprovisationNavbar/ImprovisationNavbar";
 import "./Improvisation.scss";
-import { Container, Col, Row } from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import ImprovisationSpeech from "./ImprovisationSpeech/ImprovisationSpeech";
 import ImprovisationMoveList from "./ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveList";
 import ImprovisationMoveManual from "./ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";

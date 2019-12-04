@@ -1,9 +1,8 @@
-import React, { Component, useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, {useEffect, useState} from "react";
 import classNames from "classnames";
 import "./ImprovisationMoveList.scss";
-import { List, Button, ListItem, ListItemText } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import {Button, List, ListItem, ListItemText} from "@material-ui/core";
+import {makeStyles} from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {

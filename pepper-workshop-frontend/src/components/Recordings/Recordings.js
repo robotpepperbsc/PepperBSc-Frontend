@@ -1,18 +1,7 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  IconButton,
-  Grid,
-  Button
-} from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+import React, {useEffect} from "react";
+import {Button, Grid, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText} from "@material-ui/core";
 import PlayArrow from "@material-ui/icons/PlayArrow";
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {

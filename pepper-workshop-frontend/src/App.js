@@ -1,14 +1,13 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./components/Home/Home";
 import Settings from "./components/Settings/Settings";
 import Improvisation from "./components/Improvisation/Improvisation";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import configureStore from "./modules/configureStore";
 import MediaContainer from "./components/ Media/MediaContainer";
 import ScenariosContainer from "./components/Scenarios/ScenariosContainer";
-import Recordings from "./components/Recordings/Recordings";
 import RecordingsContainer from "./components/Recordings/RecordingsContainer";
 
 const store = configureStore();

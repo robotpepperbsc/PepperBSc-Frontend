@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 
-import { Form, Row, Col, Container, Dropdown } from "react-bootstrap";
+import {Col, Container, Form, Row} from "react-bootstrap";
 import "./ImprovisationSpeech.scss";
 import SpeechSlider from "../../SpeechSlider/SpeechSlider";
-import { createSpeechAction, pepperActionType } from "../pepperActionService";
-import { Button } from "@material-ui/core";
+import {createSpeechAction} from "../pepperActionService";
+import {Button} from "@material-ui/core";
 
 const languages = {
   english: "English",

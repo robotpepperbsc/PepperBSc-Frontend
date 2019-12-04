@@ -1,4 +1,4 @@
-import { all } from "redux-saga/effects";
+import {all} from "redux-saga/effects";
 import settingsSaga from "./Settings/sagas";
 import scenariosSagas from "./Scenarios/sagas";
 import mediaSagas from "./Media/sagas";
