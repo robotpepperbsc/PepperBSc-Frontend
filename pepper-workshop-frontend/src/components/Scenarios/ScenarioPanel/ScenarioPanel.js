@@ -166,19 +166,18 @@ const ScenarioPanel = ({
                 addActionToScenario={addActionToScenario}
               />
             ) : null}
-            {
-              (values.editedActionType = pepperActionType.media ? (
-                <MediaContainer
-                  saveEditedAction={handleSaveEditedAction}
-                  action={currentEditedAction}
-                  addActionToScenario={addActionToScenario}
-                />
-              ) : null)
-            }
+
+            {values.editedActionType === pepperActionType.media ? (
+              <MediaContainer
+                saveEditedAction={handleSaveEditedAction}
+                action={currentEditedAction}
+                addActionToScenario={addActionToScenario}
+              />
+            ) : null}
 
             <Button
               fullWidth
-              variant="contained"
+              variant={"contained"}
               className={classes.submit}
               onClick={handleClose}
             >
@@ -190,7 +189,7 @@ const ScenarioPanel = ({
         <Button
           type="submit"
           fullWidth
-          variant="contained"
+          variant={"contained"}
           className={classes.submit}
           onClick={handlePostScenario}
         >

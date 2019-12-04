@@ -11,6 +11,17 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PlayArrow from "@material-ui/icons/PlayArrow";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    margin: "2rem 20%"
+  },
+  button: {
+    margin: "0 20px"
+  }
+}));
 
 const Media = ({
   media,
@@ -30,9 +41,9 @@ const Media = ({
   useEffect(() => {
     getMedia();
   }, []);
-
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <List>
         {media.map(media => {
           const className = classNames("media", {

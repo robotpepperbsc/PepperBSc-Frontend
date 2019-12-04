@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getRecordings } from "../../modules/Recordings/actions";
+import {
+  getRecordings,
+  playRecording,
+  startRecording,
+  stopRecording
+} from "../../modules/Recordings/actions";
 import Recordings from "./Recordings";
 
 const mapStateToProps = state => ({
@@ -10,7 +15,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getRecordings: getRecordings
+  getRecordings: getRecordings,
+  playRecording: playRecording,
+  startRecording: startRecording,
+  stopRecording: stopRecording
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recordings);

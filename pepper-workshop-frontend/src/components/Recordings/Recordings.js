@@ -12,11 +12,30 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import PlayArrow from "@material-ui/icons/PlayArrow";
+import { makeStyles } from "@material-ui/core/styles";
 
-const Recordings = ({ recordings, playRecording, getRecordings }) => {
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    margin: "2rem"
+  },
+  button: {
+    margin: "0 20px"
+  }
+}));
+
+const Recordings = ({
+  recordings,
+  handleStartRecording,
+  handleStopRecording,
+  playRecording,
+  getRecordings
+}) => {
   useEffect(() => {
     getRecordings();
   }, []);
+
+  const classes = useStyles();
 
   const getRecordingDuration = duration => {
     const hrs = ~~(duration / 3600);
@@ -34,15 +53,25 @@ const Recordings = ({ recordings, playRecording, getRecordings }) => {
   };
 
   return (
-    <div>
+    <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid container xs={12}>
-          <Grid item xs={6}>
-            <Button> start recording</Button>
-          </Grid>
-          <Grid item xs={6}>
-            <Button>stop recording</Button>
-          </Grid>
+        <Grid container xs={12} justify={"center"}>
+          <Button
+            onClick={handleStartRecording}
+            className={classes.button}
+            variant={"contained"}
+          >
+            {" "}
+            start recording
+          </Button>
+          <Button
+            onClick={handleStopRecording}
+            className={classes.button}
+            color={"secondary"}
+            variant={"contained"}
+          >
+            stop recording
+          </Button>
         </Grid>
         <Grid item xs={12}>
           <List>

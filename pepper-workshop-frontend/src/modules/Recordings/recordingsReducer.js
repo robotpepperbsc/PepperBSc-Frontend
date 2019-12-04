@@ -2,7 +2,8 @@ import { GET_RECORDINGS, RECORDINGS_RECEIVED } from "./actions";
 
 const initialState = {
   recordings: [],
-  loading: false
+  loading: false,
+  isRecording: false
 };
 
 export default function recordingsReducer(state = initialState, action) {

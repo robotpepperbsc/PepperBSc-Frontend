@@ -5,10 +5,10 @@ import "./Header.scss";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="dark" expand="xl" variant="dark">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end">
-        <Nav className="mr-auto">
+        <Nav className={"header-navbar"}>
           <Link to="/improvisation">
             <Button className="nav-button" variant="dark">
               Improvisation
@@ -29,11 +29,9 @@ const Header = () => {
               Recordings
             </Button>
           </Link>
-          <Link to="/settings">
-            <Button className="nav-button" variant="dark">
-              Settings
-            </Button>
-          </Link>
+          <Button className="nav-button clear-queue" variant="danger">
+            CLEAR ACTION QUEUE
+          </Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
