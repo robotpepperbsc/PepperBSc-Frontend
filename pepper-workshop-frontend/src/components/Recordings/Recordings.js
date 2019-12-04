@@ -5,7 +5,9 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  IconButton
+  IconButton,
+  Grid,
+  Button
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -33,28 +35,40 @@ const Recordings = ({ recordings, playRecording, getRecordings }) => {
 
   return (
     <div>
-      <List>
-        {recordings.map(recording => {
-          return (
-            <ListItem button onClick={e => playRecording(recording)}>
-              <ListItemText
-                primary={`${recording.name} ${recording.file_type}`}
-                secondary={`duration: ${getRecordingDuration(
-                  recording.duration
-                )}`}
-              />
-              <ListItemSecondaryAction>
-                <IconButton
-                  aria-label="run"
-                  onClick={e => playRecording(recording)}
-                >
-                  <PlayArrow />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          );
-        })}
-      </List>
+      <Grid container spacing={3}>
+        <Grid container xs={12}>
+          <Grid item xs={6}>
+            <Button> start recording</Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button>stop recording</Button>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <List>
+            {recordings.map(recording => {
+              return (
+                <ListItem button onClick={e => playRecording(recording)}>
+                  <ListItemText
+                    primary={`${recording.name} ${recording.file_type}`}
+                    secondary={`duration: ${getRecordingDuration(
+                      recording.duration
+                    )}`}
+                  />
+                  <ListItemSecondaryAction>
+                    <IconButton
+                      aria-label="run"
+                      onClick={e => playRecording(recording)}
+                    >
+                      <PlayArrow />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              );
+            })}
+          </List>
+        </Grid>
+      </Grid>
     </div>
   );
 };
