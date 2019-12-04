@@ -1,3 +1,8 @@
+import {
+  pepperActionType,
+  commandType
+} from "../../components/Improvisation/pepperActionService";
+
 export function fetchScenarios() {
   // return fetch("/notes").then(response =>
   //   response.json().then(notes => notes.reverse())
@@ -6,12 +11,12 @@ export function fetchScenarios() {
   return [
     {
       name: "scenario1",
-      description: "cos tam",
+      description: "demo scenario",
       last_modification_date: "2019-02-10"
     },
     {
       name: "scenario2",
-      description: "jejejejeej",
+      description: "second demo scenario",
       last_modification_date: "2019-02-13"
     }
   ];
@@ -26,15 +31,19 @@ export function fetchScenario(name) {
     last_modification_date: "2019-02-13",
     actions: [
       {
-        type: "speech",
+        type: pepperActionType.speech,
         text: "hello kids",
         volume: 0.8,
-        speech_speed: 200,
+        speechSpeed: 200,
         language: "English"
       },
       {
-        type: "sequence",
+        type: pepperActionType.sequence,
         name: "boogie woogie"
+      },
+      {
+        type: pepperActionType.generic,
+        command: commandType.forward
       }
     ]
   };

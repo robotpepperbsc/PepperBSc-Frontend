@@ -15,7 +15,7 @@ export const createSpeechAction = (text, volume, speechSpeed, language) => {
   };
 };
 
-const commandType = {
+export const commandType = {
   forward: "forward",
   backward: "backward",
   turnRight: "turn_right",

@@ -8,13 +8,29 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import { pepperActionType } from "../../Improvisation/pepperActionService";
 
 const Action = ({ index, action, editAction, deleteAction }) => {
   const getName = () => {
     return action.type || "";
   };
   const getSecondary = () => {
-    return action.text || action.name;
+    switch (action.type) {
+      case pepperActionType.speech:
+        return (
+          <div>
+            <p>{action.text}</p>
+            <p>{`volume: ${action.volume}, speed: ${action.speechSpeed}, language: ${action.language}`}</p>
+          </div>
+        );
+      case pepperActionType.generic:
+        return action.command;
+      case pepperActionType.sequence:
+      case pepperActionType.media:
+        return action.name;
+      default:
+        return "";
+    }
   };
 
   const handleEditAction = () => {
