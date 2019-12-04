@@ -10,7 +10,7 @@ export default function mediaReducer(state = initialState, action) {
     case GET_MEDIA:
       return { ...state, loading: true };
     case MEDIA_RECEIVED:
-      return { ...state, scenarios: action.payload, loading: false };
+      return { ...state, media: action.payload, loading: false };
     default:
       return state;
   }

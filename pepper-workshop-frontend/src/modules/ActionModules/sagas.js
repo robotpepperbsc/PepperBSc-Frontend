@@ -27,7 +27,6 @@ function* queueMove(action) {
 }
 
 function* queueSequence(action) {
-  const { name } = action;
   try {
     yield call(api.queueSequence, action.pepperAction);
   } catch (error) {

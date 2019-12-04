@@ -5,6 +5,7 @@ import scenariosReducer from "./Scenarios/scenariosReducer";
 import rootSaga from "./rootSaga";
 import errorsReducer from "./Errors/errorReducer";
 import mediaReducer from "./Media/mediaReducer";
+import recordingsReducer from "./Recordings/recordingsReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
@@ -16,6 +17,7 @@ export default () => {
       settings: settingsReducer,
       scenarios: scenariosReducer,
       media: mediaReducer,
+      recordings: recordingsReducer,
       errors: errorsReducer
     }),
     composeEnhancers(applyMiddleware(...middleware))

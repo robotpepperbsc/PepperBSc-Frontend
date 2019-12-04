@@ -4,16 +4,6 @@ import { connect } from "react-redux";
 import ImprovisationMoveManual from "./ImprovisationMoveManual";
 import { queueMove } from "../../../../modules/ActionModules/actions";
 
-const ImprovisationMoveManualContainer = props => {
-  return (
-    <Fragment>
-      <ImprovisationMoveManual queueMove={queueMove} />
-    </Fragment>
-  );
-};
-
-ImprovisationMoveManualContainer.propTypes = {};
-
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
@@ -23,4 +13,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ImprovisationMoveManualContainer);
+)(ImprovisationMoveManual);

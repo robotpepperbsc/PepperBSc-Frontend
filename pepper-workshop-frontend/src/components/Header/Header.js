@@ -5,7 +5,7 @@ import "./Header.scss";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" expand="md" variant="dark">
+    <Navbar bg="dark" expand="lg" variant="dark">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end">
         <Nav className="mr-auto">

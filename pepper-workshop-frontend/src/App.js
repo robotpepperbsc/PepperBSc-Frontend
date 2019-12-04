@@ -9,6 +9,7 @@ import configureStore from "./modules/configureStore";
 import MediaContainer from "./components/ Media/MediaContainer";
 import ScenariosContainer from "./components/Scenarios/ScenariosContainer";
 import Recordings from "./components/Recordings/Recordings";
+import RecordingsContainer from "./components/Recordings/RecordingsContainer";
 
 const store = configureStore();
 
@@ -26,7 +27,7 @@ class App extends React.Component {
                 <Route path="/improvisation" component={Improvisation} />
                 <Route path="/scenarios" component={ScenariosContainer} />
                 <Route path="/media" component={MediaContainer} />
-                <Route path="/recordings" component={Recordings} />
+                <Route path="/recordings" component={RecordingsContainer} />
               </Switch>
             </div>
           </Router>
