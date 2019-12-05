@@ -1,7 +1,7 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
 import ImprovisationSpeech from "./ImprovisationSpeech";
-import {queueSpeech} from "../../../../modules/ActionModules/actions";
+import { queueSpeech } from "../../../modules/ActionModules/actions";
 
 const ImprovisationSpeechContainer = props => {
   return (
@@ -15,11 +15,13 @@ ImprovisationSpeechContainer.propTypes = {};
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {
-  queueSpeech: queueSpeech
-};
+const mapDispatchToProps = dispatch => ({
+  postSpeech: action => {
+    dispatch(queueSpeech(action));
+  }
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ImprovisationSpeechContainer);
+)(ImprovisationSpeech);

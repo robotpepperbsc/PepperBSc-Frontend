@@ -10,7 +10,7 @@ export const createSpeechAction = (text, volume, speechSpeed, language) => {
     type: pepperActionType.speech,
     text: text,
     volume: volume,
-    speechSpeed: speechSpeed,
+    speech_speed: speechSpeed,
     language: language
   };
 };

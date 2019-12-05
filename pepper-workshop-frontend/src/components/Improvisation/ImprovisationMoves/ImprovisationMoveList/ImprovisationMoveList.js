@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import "./ImprovisationMoveList.scss";
-import {Button, List, ListItem, ListItemText} from "@material-ui/core";
-import {makeStyles} from "@material-ui/styles";
+import { Button, List, ListItem, ListItemText } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import { getSequences } from "../../../../modules/Sequences/actions";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -10,18 +11,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ImprovisationMoveList = ({ action }) => {
+const ImprovisationMoveList = ({
+  sequences,
+  action,
+  getSequences,
+  postSequence
+}) => {
   const [values, setValues] = useState({
-    seletectedMove: { name: "test", description: "xddd" },
-    moves: [
-      { name: "test2", description: "111" },
-      { name: "test3", description: "22" },
-      { name: "test4", description: "333" },
-      { name: "test5", description: "dddd" }
-    ]
+    selectedSequence: {}
   });
 
   useEffect(() => {
+    getSequences();
     if (action) {
       setValues({ ...values, seletectedMove: action });
       return;
@@ -34,33 +35,31 @@ const ImprovisationMoveList = ({ action }) => {
 
   const handlePostMove = e => {
     e.stopPropagation();
-    //post selectedMove
+    postSequence(values.selectedSequence);
   };
   const classes = useStyles();
-  const moves = values.moves;
 
   return (
     <div className={"improvisation-move-container"}>
       <div className={"improvisation header"}>Choose move</div>
       <div className={"moves-container"}>
         <List classes={classes}>
-          {moves.map(move => {
-            const className = classNames("move", {
-              selected: move.name === values.seletectedMove.name
-            });
-            return (
-              <ListItem
-                button
-                className={className}
-                onClick={e => selectMove(move)}
-              >
-                <ListItemText
-                  primary={move.name}
-                  secondary={move.description}
-                />
-              </ListItem>
-            );
-          })}
+          {sequences
+            ? sequences.map(sequence => {
+                const className = classNames("move", {
+                  selected: sequence.name === values.selectedSequence.name
+                });
+                return (
+                  <ListItem
+                    button
+                    className={className}
+                    onClick={e => selectMove(sequence)}
+                  >
+                    <ListItemText primary={sequence.name} />
+                  </ListItem>
+                );
+              })
+            : null}
         </List>
       </div>
       <Button

@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import settingsReducer from "./Settings/settingsReducer";
 import scenariosReducer from "./Scenarios/scenariosReducer";
@@ -6,6 +6,7 @@ import rootSaga from "./rootSaga";
 import errorsReducer from "./Errors/errorReducer";
 import mediaReducer from "./Media/mediaReducer";
 import recordingsReducer from "./Recordings/recordingsReducer";
+import sequencesReducer from "./Sequences/sequencesReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
@@ -18,7 +19,8 @@ export default () => {
       scenarios: scenariosReducer,
       media: mediaReducer,
       recordings: recordingsReducer,
-      errors: errorsReducer
+      errors: errorsReducer,
+      sequences: sequencesReducer
     }),
     composeEnhancers(applyMiddleware(...middleware))
   );

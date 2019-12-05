@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import {Col, Container, Form, Row} from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import "./ImprovisationSpeech.scss";
 import SpeechSlider from "../../SpeechSlider/SpeechSlider";
-import {createSpeechAction} from "../pepperActionService";
-import {Button} from "@material-ui/core";
+import { createSpeechAction } from "../pepperActionService";
+import { Button } from "@material-ui/core";
 
 const languages = {
   english: "English",
@@ -25,7 +25,7 @@ export default class ImprovisationSpeech extends Component {
       speechInput: "",
       speechLoudness: 50,
       speechSpeed: 50,
-      language: "Polish"
+      language: "English"
     };
   }
 
@@ -65,8 +65,9 @@ export default class ImprovisationSpeech extends Component {
       this.setState({ speechInput: "" });
       return;
     }
-    if (this.props.queueSpeech) {
-      this.props.queueSpeech(speechAction);
+    if (this.props.postSpeech) {
+      console.log(speechAction);
+      this.props.postSpeech(speechAction);
       this.setState({ speechInput: "" });
       return;
     }
@@ -78,6 +79,10 @@ export default class ImprovisationSpeech extends Component {
 
   handleSpeechSpeedChange = value => {
     this.setState({ speechSpeed: value });
+  };
+
+  handleLanguageChange = e => {
+    this.setState({ language: e.target.value });
   };
 
   render() {
@@ -123,7 +128,7 @@ export default class ImprovisationSpeech extends Component {
                   name="speechLanguage"
                   as={"select"}
                   id={"select"}
-                  onChange={e => console.log(e.target.value)}
+                  onChange={this.handleLanguageChange}
                 >
                   {Object.values(languages).map(language => (
                     <option>{language}</option>

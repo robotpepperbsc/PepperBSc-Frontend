@@ -1,25 +1,22 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
 import ImprovisationMoveList from "./ImprovisationMoveList";
-
-const ImprovisationMoveListContainer = props => {
-  return (
-    <Fragment>
-      <ImprovisationMoveList />
-    </Fragment>
-  );
-};
-
-ImprovisationMoveListContainer.propTypes = {};
+import {
+  getSequences,
+  postSequence
+} from "../../../../modules/Sequences/actions";
 
 const mapStateToProps = state => ({
-  moves: state.moves.moves,
-  loading: state.moves.loading
+  sequences: state.sequences.sequences,
+  loading: state.sequences.loading
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getSequences: getSequences,
+  postSequence: postSequence
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ImprovisationMoveListContainer);
+)(ImprovisationMoveList);

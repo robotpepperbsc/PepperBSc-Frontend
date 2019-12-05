@@ -1,10 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Improvisation.scss";
-import {Col, Container, Row} from "react-bootstrap";
-import ImprovisationSpeech from "./ImprovisationSpeech/ImprovisationSpeech";
+import { Col, Container, Row } from "react-bootstrap";
+import ImprovisationSpeechContainer from "./ImprovisationSpeech/ImprovisationSpeechContainer";
 import ImprovisationMoveList from "./ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveList";
 import ImprovisationMoveManual from "./ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";
+import ImprovisationMoveListContainer from "./ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveListContainer";
 
 export default class Improvisation extends Component {
   static propTypes = {
@@ -23,8 +24,8 @@ export default class Improvisation extends Component {
           <Container>
             <Row>
               <Col>
-                <ImprovisationSpeech />
-                <ImprovisationMoveList />
+                <ImprovisationSpeechContainer />
+                <ImprovisationMoveListContainer />
                 <ImprovisationMoveManual />
               </Col>
             </Row>
