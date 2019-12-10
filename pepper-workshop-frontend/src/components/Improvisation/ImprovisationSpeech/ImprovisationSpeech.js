@@ -23,8 +23,8 @@ export default class ImprovisationSpeech extends Component {
 
     this.state = {
       speechInput: "",
-      speechLoudness: 50,
-      speechSpeed: 50,
+      speechLoudness: 100 / 100,
+      speechSpeed: 100,
       language: "English"
     };
   }
@@ -74,7 +74,7 @@ export default class ImprovisationSpeech extends Component {
   };
 
   handleLoudnessChange = value => {
-    this.setState({ speechLoudness: value });
+    this.setState({ speechLoudness: value / 100 });
   };
 
   handleSpeechSpeedChange = value => {
@@ -112,6 +112,8 @@ export default class ImprovisationSpeech extends Component {
                   className="loudness-slider"
                   name="speechLodunessinput"
                   as={SpeechSlider}
+                  values={[100]}
+                  domain={[0, 100]}
                   onLoudnessChange={this.handleLoudnessChange}
                 />
                 <Form.Label>
@@ -119,8 +121,10 @@ export default class ImprovisationSpeech extends Component {
                 </Form.Label>
                 <Form.Control
                   className="loudness-slider"
-                  name="speechLodunessinput"
+                  name="speechSpeedinput"
                   as={SpeechSlider}
+                  values={[100]}
+                  domain={[50, 400]}
                   onLoudnessChange={this.handleSpeechSpeedChange}
                 />
                 <Form.Label>set language</Form.Label>

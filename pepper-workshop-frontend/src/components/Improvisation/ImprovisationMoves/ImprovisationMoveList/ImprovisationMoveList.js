@@ -4,6 +4,7 @@ import "./ImprovisationMoveList.scss";
 import { Button, List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { getSequences } from "../../../../modules/Sequences/actions";
+import { createMoveAction } from "../../pepperActionService";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,7 +36,9 @@ const ImprovisationMoveList = ({
 
   const handlePostMove = e => {
     e.stopPropagation();
-    postSequence(values.selectedSequence);
+    console.log(values.selectedSequence);
+    const sequenceAction = createMoveAction(values.selectedSequence);
+    postSequence(sequenceAction);
   };
   const classes = useStyles();
 

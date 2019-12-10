@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {Handles, Rail, Slider, Tracks} from "react-compound-slider";
-import {Handle, SliderRail, Track} from "./SliderMiscComponents";
+import React, { Component } from "react";
+import { Handles, Rail, Slider, Tracks } from "react-compound-slider";
+import { Handle, SliderRail, Track } from "./SliderMiscComponents";
 
 const sliderStyle = {
   position: "relative",
@@ -8,17 +8,18 @@ const sliderStyle = {
   touchAction: "none"
 };
 
-const domain = [0, 100];
-const defaultValues = [50];
-
 export default class SpeechSlider extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      values: defaultValues.slice(),
-      update: defaultValues.slice()
-    };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    this.setState({
+      values: this.props.values,
+      update: this.props.values
+    });
   }
 
   onUpdate = update => {
@@ -26,10 +27,7 @@ export default class SpeechSlider extends Component {
   };
 
   render() {
-    const {
-      state: { values, update }
-    } = this;
-
+    const { values, domain } = this.props;
     return (
       <div style={{ margin: "1rem", height: 20, width: "100%" }}>
         <Slider
