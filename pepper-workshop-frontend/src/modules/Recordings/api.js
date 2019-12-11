@@ -26,11 +26,11 @@ export function playRecording(name, fileType) {
 }
 
 export function startRecording() {
-  const url = `${serverURL}record?status="true"`;
+  const url = `${serverURL}record?status=true`;
   return fetch(url).then(response => response.json());
 }
 
 export function stopRecording() {
-  const url = `${serverURL}record?status="false"`;
+  const url = `${serverURL}record?status=false`;
   return fetch(url).then(response => response.json());
 }

@@ -69,12 +69,6 @@ const Media = ({
                 >
                   <ListItemText primary={media.name} />
                   <ListItemSecondaryAction>
-                    <IconButton aria-label="edit" onClick={handleEditMedia}>
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton aria-label="delete" onClick={handleDeleteMedia}>
-                      <DeleteIcon />
-                    </IconButton>
                     <IconButton
                       aria-label="run"
                       onClick={e => handleRunMedia(media.name, "jpg")}
@@ -101,12 +95,6 @@ const Media = ({
                 >
                   <ListItemText primary={media.name} />
                   <ListItemSecondaryAction>
-                    <IconButton aria-label="edit" onClick={handleEditMedia}>
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton aria-label="delete" onClick={handleDeleteMedia}>
-                      <DeleteIcon />
-                    </IconButton>
                     <IconButton
                       aria-label="run"
                       onClick={e => handleRunMedia(media.name, "mp4")}
