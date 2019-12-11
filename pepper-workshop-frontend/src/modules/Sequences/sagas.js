@@ -5,8 +5,10 @@ import { setError } from "../Errors/actions";
 
 function* getSequences() {
   try {
-    const sequences = yield call(api.fetchSequences);
-    yield put({ type: SEQUENCES_RECEIVED, payload: sequences });
+    console.log("sss");
+    const response = yield call(api.fetchSequences);
+    console.log(response);
+    yield put({ type: SEQUENCES_RECEIVED, payload: response.sequences });
   } catch (error) {
     console.log(error);
     yield put(setError(error));

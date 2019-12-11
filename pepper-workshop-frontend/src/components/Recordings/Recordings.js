@@ -1,7 +1,15 @@
-import React, {useEffect} from "react";
-import {Button, Grid, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText} from "@material-ui/core";
+import React, { useEffect } from "react";
+import {
+  Button,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText
+} from "@material-ui/core";
 import PlayArrow from "@material-ui/icons/PlayArrow";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,10 +23,10 @@ const useStyles = makeStyles(theme => ({
 
 const Recordings = ({
   recordings,
-  handleStartRecording,
-  handleStopRecording,
   playRecording,
-  getRecordings
+  getRecordings,
+  startRecording,
+  stopRecording
 }) => {
   useEffect(() => {
     getRecordings();
@@ -39,6 +47,14 @@ const Recordings = ({
     ret += "" + mins + ":" + (secs < 10 ? "0" : "");
     ret += "" + secs;
     return ret;
+  };
+
+  const handleStartRecording = () => {
+    startRecording();
+  };
+
+  const handleStopRecording = () => {
+    stopRecording();
   };
 
   return (
@@ -66,7 +82,12 @@ const Recordings = ({
           <List>
             {recordings.map(recording => {
               return (
-                <ListItem button onClick={e => playRecording(recording)}>
+                <ListItem
+                  button
+                  onClick={e =>
+                    playRecording(recording.name, recording.file_type)
+                  }
+                >
                   <ListItemText
                     primary={`${recording.name} ${recording.file_type}`}
                     secondary={`duration: ${getRecordingDuration(
@@ -76,7 +97,9 @@ const Recordings = ({
                   <ListItemSecondaryAction>
                     <IconButton
                       aria-label="run"
-                      onClick={e => playRecording(recording)}
+                      onClick={e =>
+                        playRecording(recording.name, recording.file_type)
+                      }
                     >
                       <PlayArrow />
                     </IconButton>

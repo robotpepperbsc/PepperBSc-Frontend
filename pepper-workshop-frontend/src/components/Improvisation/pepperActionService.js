@@ -16,18 +16,18 @@ export const createSpeechAction = (text, volume, speechSpeed, language) => {
 };
 
 export const commandType = {
-  forward: "forward",
-  backward: "backward",
-  turnRight: "turn_right",
-  turnLeft: "turn_left"
+  up: "move_forward",
+  back: "move_backward",
+  right: "turn_right",
+  left: "turn_left"
 };
 
-export const createMoveAction = (command, distance, direction) => {
+export const createMoveAction = (command, distance, angle) => {
   return {
     type: pepperActionType.generic,
     command: commandType[command],
     distance,
-    direction
+    angle
   };
 };
 

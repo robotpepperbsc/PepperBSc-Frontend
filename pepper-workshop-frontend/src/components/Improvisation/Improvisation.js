@@ -6,6 +6,7 @@ import ImprovisationSpeechContainer from "./ImprovisationSpeech/ImprovisationSpe
 import ImprovisationMoveList from "./ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveList";
 import ImprovisationMoveManual from "./ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManual";
 import ImprovisationMoveListContainer from "./ImprovisationMoves/ImprovisationMoveList/ImprovisationMoveListContainer";
+import ImprovisationMoveManualContainer from "./ImprovisationMoves/ImprovisationMoveManual/ImprovisationMoveManualContainer";
 
 export default class Improvisation extends Component {
   static propTypes = {
@@ -26,7 +27,7 @@ export default class Improvisation extends Component {
               <Col>
                 <ImprovisationSpeechContainer />
                 <ImprovisationMoveListContainer />
-                <ImprovisationMoveManual />
+                <ImprovisationMoveManualContainer />
               </Col>
             </Row>
           </Container>

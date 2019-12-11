@@ -1,17 +1,6 @@
-export function fetchMedia() {
-  // return fetch("/media").then(response =>
-  //   response.json().then(notes => notes.reverse())
-  // );
+import { serverURL } from "../../constants";
 
-  return [
-    {
-      name: "media1"
-    },
-    {
-      name: "media2"
-    },
-    {
-      name: "media3"
-    }
-  ];
+export function fetchMedia() {
+  const url = `${serverURL}media`;
+  return fetch(url).then(response => response.json());
 }

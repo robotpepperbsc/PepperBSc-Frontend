@@ -5,6 +5,7 @@ import mediaSagas from "./Media/sagas";
 import actionSagas from "./ActionModules/sagas";
 import recordingsSagas from "./Recordings/sagas";
 import utilsSagas from "./Utils/sagas";
+import sequenceSagas from "./Sequences/sagas";
 
 export default function* rootSaga() {
   yield all([
@@ -13,6 +14,7 @@ export default function* rootSaga() {
     mediaSagas(),
     actionSagas(),
     recordingsSagas(),
+    sequenceSagas(),
     utilsSagas()
   ]);
 }

@@ -1,6 +1,7 @@
 import { serverURL } from "../../constants";
 
 export function fetchSequences() {
+  console.log("x");
   const url = `${serverURL}sequences`;
-  fetch(url).then(response => response.json());
+  return fetch(url).then(response => response.json());
 }

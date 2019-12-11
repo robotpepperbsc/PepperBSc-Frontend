@@ -8,11 +8,14 @@ const mapStateToProps = state => ({
   sequences: state.sequences.sequences,
   loading: state.sequences.loading
 });
-
-const mapDispatchToProps = {
-  getSequences: getSequences,
-  postSequence: queueSequence
-};
+const mapDispatchToProps = dispatch => ({
+  getSequences: () => {
+    dispatch(getSequences());
+  },
+  postSequence: name => {
+    dispatch(queueSequence(name));
+  }
+});
 
 export default connect(
   mapStateToProps,

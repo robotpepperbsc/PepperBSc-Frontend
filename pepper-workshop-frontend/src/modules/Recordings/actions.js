@@ -8,9 +8,10 @@ export const getRecordings = () => ({
   type: GET_RECORDINGS
 });
 
-export const playRecording = recording => ({
+export const playRecording = (name, fileType) => ({
   type: PLAY_RECORDING,
-  recording: recording
+  name: name,
+  fileType: fileType
 });
 
 export const startRecording = () => ({

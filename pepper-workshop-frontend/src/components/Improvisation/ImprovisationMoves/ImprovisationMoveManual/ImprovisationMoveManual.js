@@ -50,7 +50,13 @@ export default class ImprovisationMoveManual extends Component {
   sendClearMove = e => {
     e.stopPropagation();
     const { selectedMove, distance, angle } = this.state;
-    const moveToSend = createMoveAction(selectedMove, distance, angle);
+    const distanceNormalized = distance / 100;
+    const angleNormalized = this.getAngle();
+    const moveToSend = createMoveAction(
+      selectedMove,
+      distanceNormalized,
+      angleNormalized
+    );
     this.props.queueMove(moveToSend);
     this.setState({ selectedMove: null });
   };
