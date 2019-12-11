@@ -1,5 +1,5 @@
 export function fetchMedia() {
-  // return fetch("/notes").then(response =>
+  // return fetch("/media").then(response =>
   //   response.json().then(notes => notes.reverse())
   // );
 

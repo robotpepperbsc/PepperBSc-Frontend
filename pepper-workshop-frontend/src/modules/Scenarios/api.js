@@ -1,7 +1,12 @@
-import {commandType, pepperActionType} from "../../components/Improvisation/pepperActionService";
+import {
+  commandType,
+  pepperActionType
+} from "../../components/Improvisation/pepperActionService";
+import { serverURL } from "../../constants";
 
 export function fetchScenarios() {
-  // return fetch("/notes").then(response =>
+  // const url = `${serverURL}scenarios`;
+  // return fetch(url).then(response =>
   //   response.json().then(notes => notes.reverse())
   // );
 
@@ -19,9 +24,11 @@ export function fetchScenarios() {
   ];
 }
 
-export function deleteScenario() {}
-
 export function fetchScenario(name) {
+  const url = `${serverURL}scenario?name="${name}`;
+  // return fetch(url).then(response =>
+  //   response.json()
+  // );
   return {
     name: "scenario2",
     description: "jejejejeej",
@@ -44,4 +51,21 @@ export function fetchScenario(name) {
       }
     ]
   };
+}
+
+export function runScenario(name, start, end) {
+  console.log("running scenario", name, start, end);
+  const url = `${serverURL}scenario?name="${name}&run="true"${
+    start ? `&start=${start}` : null
+  }${end ? `&end=${end}` : null}`;
+  // return fetch(url).then(response =>
+  //   response.json()
+  // );
+}
+
+export function deleteScenario(name) {
+  const url = `${serverURL}scenarios/remove?name="${name}`;
+  // return fetch(url).then(response =>
+  //   response.json()
+  // );
 }

@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import ScenarioListItem from "./ScenarioListItem";
-import {Grid, List} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
+import { Grid, List } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,7 +13,8 @@ const ScenarioList = ({
   scenarios,
   getScenarios,
   deleteScenario,
-  setActiveScenario
+  setActiveScenario,
+  runScenario
 }) => {
   useEffect(() => {
     getScenarios();
@@ -30,6 +31,7 @@ const ScenarioList = ({
               scenario={scenario}
               deleteScenario={deleteScenario}
               setActiveScenario={setActiveScenario}
+              runScenario={runScenario}
             />
           );
         })}

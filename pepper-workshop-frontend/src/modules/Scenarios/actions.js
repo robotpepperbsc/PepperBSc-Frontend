@@ -7,6 +7,20 @@ export const START_NEW_SCENARIO = "START_NEW_SCENARIO";
 export const UPDATE_ACTIVE_SCENARIO = "UPDATE_ACTIVE_SCENARIO";
 export const SAVE_EDITED_ACTION = "SAVE_EDITED_ACTION";
 export const SET_EDITED_ACTION = "SET_EDITED_ACTION";
+export const RUN_SCENARIO = "RUN_SCENARIO";
+export const SAVE_SCENARIO = "SAVE_SCENARIO";
+
+export const runScenario = (name, start, end) => ({
+  type: RUN_SCENARIO,
+  name,
+  start,
+  end
+});
+
+export const saveScenario = scenario => ({
+  type: SAVE_SCENARIO,
+  scenario
+});
 
 export const setEditedAction = (index, action) => ({
   type: SET_EDITED_ACTION,

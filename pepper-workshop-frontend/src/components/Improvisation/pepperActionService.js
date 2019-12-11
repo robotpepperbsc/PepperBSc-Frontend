@@ -22,10 +22,12 @@ export const commandType = {
   turnLeft: "turn_left"
 };
 
-export const createMoveAction = command => {
+export const createMoveAction = (command, distance, direction) => {
   return {
     type: pepperActionType.generic,
-    command: commandType[command]
+    command: commandType[command],
+    distance,
+    direction
   };
 };
 

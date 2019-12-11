@@ -1,10 +1,8 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import ImprovisationMoveList from "./ImprovisationMoveList";
-import {
-  getSequences,
-  postSequence
-} from "../../../../modules/Sequences/actions";
+import { getSequences } from "../../../../modules/Sequences/actions";
+import { queueSequence } from "../../../../modules/ActionModules/actions";
 
 const mapStateToProps = state => ({
   sequences: state.sequences.sequences,
@@ -13,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   getSequences: getSequences,
-  postSequence: postSequence
+  postSequence: queueSequence
 };
 
 export default connect(

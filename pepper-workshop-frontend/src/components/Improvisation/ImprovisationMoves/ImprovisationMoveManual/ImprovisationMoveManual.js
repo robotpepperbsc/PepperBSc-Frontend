@@ -10,6 +10,7 @@ import classNames from "classnames";
 import { Grid } from "@material-ui/core";
 import { Form, Row } from "react-bootstrap";
 import SpeechSlider from "../../../SpeechSlider/SpeechSlider";
+import { createMoveAction } from "../../pepperActionService";
 
 export default class ImprovisationMoveManual extends Component {
   static propTypes = {
@@ -48,7 +49,9 @@ export default class ImprovisationMoveManual extends Component {
 
   sendClearMove = e => {
     e.stopPropagation();
-    //sendmove
+    const { selectedMove, distance, angle } = this.state;
+    const moveToSend = createMoveAction(selectedMove, distance, angle);
+    this.props.queueMove(moveToSend);
     this.setState({ selectedMove: null });
   };
 

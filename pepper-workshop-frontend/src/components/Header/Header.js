@@ -1,9 +1,12 @@
 import React from "react";
-import {Button, Nav, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Button, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ clearQueue }) => {
+  const handleClearQueue = () => {
+    clearQueue();
+  };
   return (
     <Navbar bg="dark" expand="xl" variant="dark">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -29,7 +32,11 @@ const Header = () => {
               Recordings
             </Button>
           </Link>
-          <Button className="nav-button clear-queue" variant="danger">
+          <Button
+            onClick={handleClearQueue}
+            className="nav-button clear-queue"
+            variant="danger"
+          >
             CLEAR ACTION QUEUE
           </Button>
         </Nav>

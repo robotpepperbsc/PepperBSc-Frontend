@@ -1,13 +1,14 @@
-import {all, call, put, takeEvery, takeLatest} from "redux-saga/effects";
+import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import * as api from "./api";
 import {
-    DELETE_SCENARIO,
-    GET_SCENARIOS,
-    SCENARIOS_RECEIVED,
-    SET_ACTIVE_SCENARIO,
-    setActiveScenarioSuccess
+  DELETE_SCENARIO,
+  GET_SCENARIOS,
+  SCENARIOS_RECEIVED,
+  SET_ACTIVE_SCENARIO,
+  setActiveScenarioSuccess,
+  RUN_SCENARIO
 } from "./actions";
-import {setError} from "../Errors/actions";
+import { setError } from "../Errors/actions";
 
 function* getScenarios() {
   try {
@@ -32,7 +33,7 @@ function* updateActiveScenario(action) {
 
 function* deleteScenario(action) {
   try {
-    yield call(api.deleteScenario, action.name);
+    const response = yield call(api.deleteScenario, action.name);
     yield put(getScenarios());
   } catch (error) {
     console.log(error);
@@ -52,10 +53,29 @@ function* watchSetActiveScenario() {
   yield takeEvery(SET_ACTIVE_SCENARIO, updateActiveScenario);
 }
 
+function* runScenario(action) {
+  try {
+    const response = yield call(
+      api.runScenario,
+      action.name,
+      action.start,
+      action.end
+    );
+  } catch (error) {
+    console.log(error);
+    yield put(setError(error));
+  }
+}
+
+function* watchRunScenario() {
+  yield takeLatest(RUN_SCENARIO, runScenario);
+}
+
 export default function* scenariosSagas() {
   yield all([
     watchGetSCenarios(),
     watchSetActiveScenario(),
-    watchDeleteScenario()
+    watchDeleteScenario(),
+    watchRunScenario()
   ]);
 }
